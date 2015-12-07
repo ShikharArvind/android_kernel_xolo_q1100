@@ -29,20 +29,7 @@
 #define ANDROID_ALARM_PRINT_INFO (1U << 0)
 #define ANDROID_ALARM_PRINT_IO (1U << 1)
 #define ANDROID_ALARM_PRINT_INT (1U << 2)
-//Added by zhaochengliang for poweroff alarm (X825) SW000000 2013/10/17 begin
-#define ANDROID_ALARM_RTC_DEVICEUP 6
-static int alarm_rtc_deviceup = 0;
 
-void set_alarm_rtc_deviceup_type(int isdeviceup)
-{
-	alarm_rtc_deviceup = isdeviceup;
-};
-
-int get_alarm_rtc_deviceup_type(void)
-{
-	return alarm_rtc_deviceup;
-};
-//Added by zhaochengliang for poweroff alarm (X825) SW000000 2013/10/17 end
 static int debug_mask = ANDROID_ALARM_PRINT_INFO;
 module_param_named(debug_mask, debug_mask, int, S_IRUGO | S_IWUSR | S_IWGRP);
 
@@ -62,6 +49,7 @@ module_param_named(debug_mask, debug_mask, int, S_IRUGO | S_IWUSR | S_IWGRP);
 #define ANDROID_ALARM_SET_AND_WAIT_OLD      _IOW('a', 3, time_t)
 
 static int alarm_opened;
+static DEFINE_MUTEX(alarm_mutex);
 static DEFINE_SPINLOCK(alarm_slock);
 static struct wake_lock alarm_wake_lock;
 static DECLARE_WAIT_QUEUE_HEAD(alarm_wait_queue);
@@ -80,16 +68,7 @@ static long alarm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	struct timespec tmp_time;
 	enum android_alarm_type alarm_type = ANDROID_ALARM_IOCTL_TO_TYPE(cmd);
 	uint32_t alarm_type_mask = 1U << alarm_type;
-//Added by zhaochengliang for poweroff alarm (X825) SW000000 2013/10/17 begin    
-	
-	if (alarm_type == ANDROID_ALARM_RTC_DEVICEUP) {
-		alarm_type = ANDROID_ALARM_RTC_WAKEUP;
-		set_alarm_rtc_deviceup_type(1);
-	} else {
-		set_alarm_rtc_deviceup_type(0);
-	}
-//Added by zhaochengliang for poweroff alarm (project) SW000000 2013/10/17 end
-	
+
 	if (alarm_type >= ANDROID_ALARM_TYPE_COUNT)
 		return -EINVAL;
 
@@ -111,6 +90,7 @@ static long alarm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
 	switch (ANDROID_ALARM_BASE_CMD(cmd)) {
 	case ANDROID_ALARM_CLEAR(0):
+		mutex_lock(&alarm_mutex);
 		spin_lock_irqsave(&alarm_slock, flags);
 		pr_alarm(IO, "alarm %d clear\n", alarm_type);
 		alarm_try_to_cancel(&alarms[alarm_type]);
@@ -120,20 +100,12 @@ static long alarm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 				wake_unlock(&alarm_wake_lock);
 		}
 		alarm_enabled &= ~alarm_type_mask;
-//Added by zhaochengliang for poweroff alarm (X825) SW000000 2013/10/17 begin
-#if 0
-		if (alarm_type == ANDROID_ALARM_RTC_WAKEUP)
-			set_power_on_alarm(0);
-#endif
-		if(get_alarm_rtc_deviceup_type())
-		{
-			set_alarm_rtc_deviceup_type(0);
-			if(get_power_on_alarm() ){
-				set_power_on_alarm(0);
-			}
-		}		
-//Added by zhaochengliang for poweroff alarm (X825) SW000000 2013/10/17 end
 		spin_unlock_irqrestore(&alarm_slock, flags);
+		if (alarm_type == ANDROID_ALARM_RTC_POWEROFF_WAKEUP)
+			if (!copy_from_user(&new_alarm_time,
+				(void __user *)arg, sizeof(new_alarm_time)))
+				set_power_on_alarm(new_alarm_time.tv_sec, 0);
+		mutex_unlock(&alarm_mutex);
 		break;
 
 	case ANDROID_ALARM_SET_OLD:
@@ -153,6 +125,7 @@ static long alarm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 			goto err1;
 		}
 from_old_alarm_set:
+		mutex_lock(&alarm_mutex);
 		spin_lock_irqsave(&alarm_slock, flags);
 		pr_alarm(IO, "alarm %d set %ld.%09ld\n", alarm_type,
 			new_alarm_time.tv_sec, new_alarm_time.tv_nsec);
@@ -160,15 +133,12 @@ from_old_alarm_set:
 		alarm_start_range(&alarms[alarm_type],
 			timespec_to_ktime(new_alarm_time),
 			timespec_to_ktime(new_alarm_time));
-//Added by zhaochengliang for poweroff alarm (X825) SW000000 2013/10/17 begin
-		if (get_alarm_rtc_deviceup_type() &&
-				(ANDROID_ALARM_BASE_CMD(cmd) ==
-				 ANDROID_ALARM_SET(0))){
-			set_power_on_alarm(new_alarm_time.tv_sec);
-			set_alarm_rtc_deviceup_type(0);
-		}
-//Added by zhaochengliang for poweroff alarm (X825) SW000000 2013/10/17 end
 		spin_unlock_irqrestore(&alarm_slock, flags);
+		if ((alarm_type == ANDROID_ALARM_RTC_POWEROFF_WAKEUP) &&
+				(ANDROID_ALARM_BASE_CMD(cmd) ==
+				 ANDROID_ALARM_SET(0)))
+			set_power_on_alarm(new_alarm_time.tv_sec, 1);
+		mutex_unlock(&alarm_mutex);
 		if (ANDROID_ALARM_BASE_CMD(cmd) != ANDROID_ALARM_SET_AND_WAIT(0)
 		    && cmd != ANDROID_ALARM_SET_AND_WAIT_OLD)
 			break;
@@ -208,6 +178,7 @@ from_old_alarm_set:
 		switch (alarm_type) {
 		case ANDROID_ALARM_RTC_WAKEUP:
 		case ANDROID_ALARM_RTC:
+		case ANDROID_ALARM_RTC_POWEROFF_WAKEUP:
 			getnstimeofday(&tmp_time);
 			break;
 		case ANDROID_ALARM_ELAPSED_REALTIME_WAKEUP:

@@ -23,6 +23,15 @@ Required properties
 					interface is mapped.
 - gpio-panel-hpd :			gpio pin use for edp hpd
 
+<<<<<<< HEAD
+=======
+
+Optional properties:
+- qcom,cont-splash-enabled:             Boolean used to enable continuous splash mode.
+- qcom,mdss-brightness-max-level:	Specifies the max brightness level supported.
+					255 = default value.
+
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 Example:
 	mdss_edp: qcom,mdss_edp@fd923400 {
 		compatible = "qcom,mdss-edp";

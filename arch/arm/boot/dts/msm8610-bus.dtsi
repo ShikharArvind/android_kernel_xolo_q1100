@@ -941,7 +941,11 @@
 			qcom,thresh = <800000>;
 			qcom,dual-conf;
 			qcom,bimc,bw = <300000>;
+<<<<<<< HEAD
 			qcom,bimc,gp = <5>;
+=======
+			qcom,bimc,gp = <5000>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 			qcom,bimc,thmp = <50>;
 		};
 

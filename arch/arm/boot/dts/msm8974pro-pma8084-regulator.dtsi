@@ -481,6 +481,12 @@
 		ranges;
 		qcom,pfm-threshold = <76>;
 		qcom,use-phase-scaling-factor;
+<<<<<<< HEAD
+=======
+		qcom,phase-scaling-factor-bits-pos = <16>;
+		qcom,valid-scaling-factor-versions = <0 1 1 0>;
+		qcom,force-auto-mode;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 
 		krait0_vreg: regulator@f9088000 {
 			compatible = "qcom,krait-regulator";
@@ -494,7 +500,11 @@
 			qcom,retention-voltage = <675000>;
 			qcom,ldo-default-voltage = <750000>;
 			qcom,ldo-threshold-voltage = <850000>;
+<<<<<<< HEAD
 			qcom,ldo-delta-voltage = <50000>;
+=======
+			qcom,ldo-delta-voltage = <12500>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 			qcom,cpu-num = <0>;
 		};
 
@@ -510,7 +520,11 @@
 			qcom,retention-voltage = <675000>;
 			qcom,ldo-default-voltage = <750000>;
 			qcom,ldo-threshold-voltage = <850000>;
+<<<<<<< HEAD
 			qcom,ldo-delta-voltage = <50000>;
+=======
+			qcom,ldo-delta-voltage = <12500>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 			qcom,cpu-num = <1>;
 		};
 
@@ -526,7 +540,11 @@
 			qcom,retention-voltage = <675000>;
 			qcom,ldo-default-voltage = <750000>;
 			qcom,ldo-threshold-voltage = <850000>;
+<<<<<<< HEAD
 			qcom,ldo-delta-voltage = <50000>;
+=======
+			qcom,ldo-delta-voltage = <12500>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 			qcom,cpu-num = <2>;
 		};
 
@@ -542,7 +560,11 @@
 			qcom,retention-voltage = <675000>;
 			qcom,ldo-default-voltage = <750000>;
 			qcom,ldo-threshold-voltage = <850000>;
+<<<<<<< HEAD
 			qcom,ldo-delta-voltage = <50000>;
+=======
+			qcom,ldo-delta-voltage = <12500>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 			qcom,cpu-num = <3>;
 		};
 	};

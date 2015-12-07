@@ -39,7 +39,11 @@
 
 		qsecom_mem: qsecom_region {
 			linux,contiguous-region;
+<<<<<<< HEAD
 			reg = <0 0x780000>;
+=======
+			reg = <0 0xd00000>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 			label = "qsecom_mem";
 		};
 	};
@@ -57,6 +61,10 @@
 /include/ "msm8226-mdss.dtsi"
 /include/ "msm8226-coresight.dtsi"
 /include/ "msm8226-iommu-domains.dtsi"
+<<<<<<< HEAD
+=======
+/include/ "msm-rdbg.dtsi"
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 
 &soc {
 	#address-cells = <1>;
@@ -216,6 +224,7 @@
 		reg = <0xf991f000 0x1000>;
 		interrupts = <0 109 0>;
 		status = "disabled";
+<<<<<<< HEAD
 	};
 
 	serial@f995e000 {
@@ -223,6 +232,15 @@
 		reg = <0xf995e000 0x1000>;
 		interrupts = <0 114 0>;
 		status = "disabled";
+=======
+
+		qcom,msm-bus,name = "blsp1_uart2";
+		qcom,msm-bus,num-cases = <2>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps =
+				<86 512 0 0>,
+				<86 512 500 800>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 
 	qcom,msm-imem@fe805000 {
@@ -281,8 +299,14 @@
 		qcom,hsusb-otg-phy-type = <2>;
 		qcom,hsusb-otg-mode = <1>;
 		qcom,hsusb-otg-otg-control = <2>;
+<<<<<<< HEAD
 		qcom,hsusb-otg-disable-reset;
 		qcom,dp-manual-pullup;
+=======
+		qcom,dp-manual-pullup;
+		qcom,ahb-async-bridge-bypass;
+		qcom,usbin-vadc = <&pm8226_vadc>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 
 		qcom,msm-bus,name = "usb";
 		qcom,msm-bus,num-cases = <3>;
@@ -297,6 +321,10 @@
 		compatible = "qcom,android-usb";
 		reg = <0xfe8050c8 0xc8>;
 		qcom,android-usb-swfi-latency = <1>;
+<<<<<<< HEAD
+=======
+		qcom,streaming-func = "rndis";
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 
 	hsic_host: hsic@f9a00000 {
@@ -386,7 +414,11 @@
 
 			qcom,cdc-micbias-ldoh-v = <0x3>;
 			qcom,cdc-micbias-cfilt1-mv = <1800>;
+<<<<<<< HEAD
 			qcom,cdc-micbias-cfilt2-mv = <2700>;/* Mod 2300 to 2700 by lichuangchuang for Muitiple Button of Headphone(X825C) SW00024681 2013/12/18 */
+=======
+			qcom,cdc-micbias-cfilt2-mv = <2700>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 			qcom,cdc-micbias-cfilt3-mv = <1800>;
 
 			qcom,cdc-micbias1-cfilt-sel = <0x0>;
@@ -427,19 +459,33 @@
 		qcom,tapan-codec-9302;
 	};
 
+<<<<<<< HEAD
 	qcom,msm-pcm {
 		compatible = "qcom,msm-pcm-dsp";
 		qcom,msm-pcm-dsp-id = <0>;
+=======
+	qti,msm-pcm {
+		compatible = "qti,msm-pcm-dsp";
+		qti,msm-pcm-dsp-id = <0>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 
 	qcom,msm-pcm-routing {
 		compatible = "qcom,msm-pcm-routing";
 	};
 
+<<<<<<< HEAD
 	qcom,msm-pcm-low-latency {
 		compatible = "qcom,msm-pcm-dsp";
 		qcom,msm-pcm-dsp-id = <1>;
 		qcom,msm-pcm-low-latency;
+=======
+	qti,msm-pcm-low-latency {
+		compatible = "qti,msm-pcm-dsp";
+		qti,msm-pcm-dsp-id = <1>;
+		qti,msm-pcm-low-latency;
+		qti,latency-level = "regular";
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 
 	qcom,msm-pcm-lpa {
@@ -450,6 +496,13 @@
 		compatible = "qcom,msm-compr-dsp";
 	};
 
+<<<<<<< HEAD
+=======
+	qcom,msm-compress-dsp {
+		compatible = "qcom,msm-compress-dsp";
+	};
+
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	qcom,msm-voip-dsp {
 		compatible = "qcom,msm-voip-dsp";
 	};
@@ -720,6 +773,27 @@
 		compatible = "qcom,bcl";
 	};
 
+<<<<<<< HEAD
+=======
+	rmtfs_sharedmem {
+		compatible = "qcom,sharedmem-uio";
+		reg = <0x0fd80000 0x00180000>;
+		reg-names = "rmtfs";
+	};
+
+	dsp_sharedmem {
+		compatible = "qcom,sharedmem-uio";
+		reg = <0x0fd60000 0x00020000>;
+		reg-names = "rfsa_dsp";
+	};
+
+	mdm_sharedmem {
+		compatible = "qcom,sharedmem-uio";
+		reg = <0x0fd60000 0x00020000>;
+		reg-names = "rfsa_mdm";
+	};
+
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	sdcc1: qcom,sdcc@f9824000 {
 		cell-index = <1>; /* SDC1 eMMC slot */
 		compatible = "qcom,msm-sdcc";
@@ -733,6 +807,10 @@
 
 		qcom,bus-width = <8>;
 
+<<<<<<< HEAD
+=======
+		qcom,cpu-dma-latency-us = <701>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		qcom,msm-bus,name = "sdcc1";
 		qcom,msm-bus,num-cases = <8>;
 		qcom,msm-bus,num-paths = <1>;
@@ -760,6 +838,10 @@
 
 		qcom,bus-width = <8>;
 
+<<<<<<< HEAD
+=======
+		qcom,cpu-dma-latency-us = <701>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		qcom,msm-bus,name = "sdhc1";
 		qcom,msm-bus,num-cases = <8>;
 		qcom,msm-bus,num-paths = <1>;
@@ -790,6 +872,10 @@
 
 		qcom,bus-width = <4>;
 
+<<<<<<< HEAD
+=======
+		qcom,cpu-dma-latency-us = <701>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		qcom,msm-bus,name = "sdcc2";
 		qcom,msm-bus,num-cases = <8>;
 		qcom,msm-bus,num-paths = <1>;
@@ -817,6 +903,10 @@
 
 		qcom,bus-width = <4>;
 
+<<<<<<< HEAD
+=======
+		qcom,cpu-dma-latency-us = <701>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		qcom,msm-bus,name = "sdhc2";
 		qcom,msm-bus,num-cases = <8>;
 		qcom,msm-bus,num-paths = <1>;
@@ -843,6 +933,10 @@
 		reg-names = "core_mem", "dml_mem", "bam_mem";
 
 		qcom,bus-width = <4>;
+<<<<<<< HEAD
+=======
+		qcom,cpu-dma-latency-us = <701>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		gpios = <&msmgpio 44 0>, /* CLK */
 			<&msmgpio 43 0>, /* CMD */
 			<&msmgpio 42 0>, /* DATA0 */
@@ -886,6 +980,10 @@
 		reg-names = "hc_mem", "core_mem";
 
 		qcom,bus-width = <4>;
+<<<<<<< HEAD
+=======
+		qcom,cpu-dma-latency-us = <701>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		gpios = <&msmgpio 44 0>, /* CLK */
 			<&msmgpio 43 0>, /* CMD */
 			<&msmgpio 42 0>, /* DATA0 */
@@ -948,6 +1046,12 @@
 		interrupt-names = "qup_err_intr";
 		qcom,i2c-bus-freq = <400000>;
 		qcom,i2c-src-freq = <19200000>;
+<<<<<<< HEAD
+=======
+		qcom,sda-gpio = <&msmgpio 10 0>;
+		qcom,scl-gpio = <&msmgpio 11 0>;
+		qcom,master-id = <86>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 	i2c@f9926000 { /* BLSP-1 QUP-4 */
 		cell-index = <0>;
@@ -970,17 +1074,64 @@
 		reg = <0xf9927000 0x1000>;
 		interrupt-names = "qup_err_intr";
 		interrupts = <0 99 0>;
+<<<<<<< HEAD
 		qcom,i2c-bus-freq = <200000>;
+=======
+		qcom,i2c-bus-freq = <384000>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		qcom,i2c-src-freq = <19200000>;
 		qcom,sda-gpio = <&msmgpio 18 0>;
 		qcom,scl-gpio = <&msmgpio 19 0>;
 	};
 
+<<<<<<< HEAD
 	qcom,acpuclk@f9011050 {
 		compatible = "qcom,acpuclk-a7";
 		reg = <0xf9011050 0x8>;
 		reg-names = "rcg_base";
 		a7_cpu-supply = <&apc_vreg_corner>;
+=======
+	qcom,clock-a7@f9011050 {
+		compatible = "qcom,clock-a7-8226";
+		reg = <0xf9011050 0x8>;
+		reg-names = "rcg-base";
+		clock-names = "clk-4", "clk-5";
+		qcom,speed0-bin-v0 =
+			<         0 0>,
+			< 384000000 1>,
+			< 787200000 2>,
+			<1190400000 3>;
+
+		cpu-vdd-supply = <&apc_vreg_corner>;
+	};
+
+	qcom,cpubw {
+		compatible = "qcom,cpubw";
+		qcom,cpu-mem-ports = <1 512>;
+		qcom,bw-tbl =
+			< 1525 /* 200 MHz */ >,
+			< 2441 /* 320 MHz */ >,
+			< 3051 /* 400 MHz */ >,
+			< 4066 /* 533 MHz */ >;
+	};
+
+	qcom,msm-cpufreq@0 {
+		reg = <0 4>;
+		compatible = "qcom,msm-cpufreq";
+		qcom,cpufreq-table =
+			<  300000 1525 >,
+			<  384000 1525 >,
+			<  600000 1525 >,
+			<  787200 1525 >,
+			<  998400 4066 >,
+			< 1094400 4066 >,
+			< 1190400 4066 >,
+			< 1305600 4066 >,
+			< 1344000 4066 >,
+			< 1401600 4066 >,
+			< 1497600 4066 >,
+			< 1593600 4066 >;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 
 	qcom,ocmem@fdd00000 {
@@ -1112,7 +1263,11 @@
 		compatible = "qcom,msm-thermal";
 		qcom,sensor-id = <0>;
 		qcom,poll-ms = <250>;
+<<<<<<< HEAD
 		qcom,limit-temp = <80>; //modify by zhaochengliang for power on temperature detect 20140113
+=======
+		qcom,limit-temp = <60>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		qcom,temp-hysteresis = <10>;
 		qcom,freq-step = <2>;
 		qcom,freq-control-mask = <0xf>;
@@ -1240,15 +1395,25 @@
 		qcom,disk-encrypt-pipe-pair = <2>;
 		qcom,hlos-ce-hw-instance = <0>;
 		qcom,qsee-ce-hw-instance = <0>;
+<<<<<<< HEAD
+=======
+		qcom,support-bus-scaling;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		qcom,msm-bus,name = "qseecom-noc";
 		qcom,msm-bus,num-cases = <4>;
 		qcom,msm-bus,active-only = <0>;
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps =
 				<55 512 0 0>,
+<<<<<<< HEAD
 				<55 512 3936000 393600>,
 				<55 512 3936000 393600>,
 				<55 512 3936000 393600>;
+=======
+				<55 512 0 0>,
+				<55 512 120000 1200000>,
+				<55 512 393600 3936000>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 
 	qcom,qcrypto@fd404000 {
@@ -1440,6 +1605,10 @@
 		qcom,hw-settle-time = <2>;
 		qcom,fast-avg-setup = <3>;
 		qcom,btm-channel-number = <0x48>;
+<<<<<<< HEAD
+=======
+		qcom,meas-interval-timer-idx = <2>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 
 	chan@8 {

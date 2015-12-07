@@ -13,6 +13,10 @@
 /include/ "dsi-panel-sharp-qhd-video.dtsi"
 /include/ "msm8974-camera-sensor-dragonboard.dtsi"
 /include/ "msm8974-leds.dtsi"
+<<<<<<< HEAD
+=======
+/include/ "msm-rdbg.dtsi"
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 
 &vph_pwr_vreg {
 	status = "ok";

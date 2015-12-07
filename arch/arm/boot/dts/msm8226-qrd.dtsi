@@ -17,6 +17,23 @@
 		status = "ok";
 	};
 
+<<<<<<< HEAD
+=======
+        i2c@f9925000 { /* BLSP1 QUP3 */
+                nfc-nci@0e {
+                        compatible = "qcom,nfc-nci";
+                        reg = <0x0e>;
+                        qcom,irq-gpio = <&msmgpio 21 0x00>;
+                        qcom,dis-gpio = <&msmgpio 20 0x00>;
+                        qcom,clk-src = "BBCLK2";
+                        qcom,clk-en-gpio = <&msmgpio 0 0x00>;
+                        interrupt-parent = <&msmgpio>;
+                        interrupts = <21 0>;
+                        qcom,clk-gpio = <&pm8226_gpios 3 0>;
+                };
+        };
+
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	i2c@f9927000 { /* BLSP1 QUP5 */
 		synaptics@20 {
 			compatible = "synaptics,rmi4";
@@ -28,6 +45,10 @@
 			synaptics,reset-gpio = <&msmgpio 16 0x00>;
 			synaptics,irq-gpio = <&msmgpio 17 0x2008>;
 			synaptics,button-map = <139 102 158>;
+<<<<<<< HEAD
+=======
+			synaptics,fw-image-name = "PR1468813.img";
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 			synaptics,i2c-pull-up;
 			synaptics,power-down;
 			synaptics,disable-gpios;
@@ -279,7 +300,11 @@
 				linux,default-trigger = "none";
 				qcom,default-state = "off";
 				qcom,max-current = <40>;
+<<<<<<< HEAD
 				qcom,current-setting = <10>;
+=======
+				qcom,current-setting = <5>;
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 				qcom,id = <6>;
 				qcom,mode = "manual";
 				qcom,source-sel = <1>;
@@ -378,9 +403,14 @@
 	qrd_batterydata: qcom,battery-data {
 		qcom,rpull-up-kohm = <100>;
 		qcom,vref-batt-therm = <1800000>;
+<<<<<<< HEAD
 //aidongdong modify for 825A battery begin
 		/include/ "batterydata-qrd-4v2-2000mah.dtsi"
 //aidongdong modify for 825A battery end
+=======
+
+		/include/ "batterydata-qrd-4v35-2000mah.dtsi"
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 	};
 };
 

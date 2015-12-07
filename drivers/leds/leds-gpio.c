@@ -21,9 +21,6 @@
 #include <linux/workqueue.h>
 #include <linux/module.h>
 
-//yuquan added for red gpio config @2013-09-13
-//u8 gpio_config=0;
-
 struct gpio_led_data {
 	struct led_classdev cdev;
 	unsigned gpio;
@@ -57,28 +54,6 @@ static void gpio_led_set(struct led_classdev *led_cdev,
 		container_of(led_cdev, struct gpio_led_data, cdev);
 	int level;
 
-//yuquan added for red gpio config @2013-09-13 begin
-	int rc;
-
-	//if(!gpio_config){
-		if(0 == led_dat->gpio){
-		    printk("config gpio_0 again\n");
-		    rc = gpio_tlmm_config(GPIO_CFG(
-				    led_dat->gpio, 0,
-				    GPIO_CFG_OUTPUT,
-				    GPIO_CFG_PULL_DOWN,
-				    GPIO_CFG_2MA),
-				    GPIO_CFG_ENABLE);
-
-		    if (rc) {
-			    pr_err("%s: unable to config tlmm = %d\n",
-				    __func__, 0);
-			    gpio_free(0);
-		    }
-	     }
-            //gpio_config=1;
-	//}
-//yuquan added for red gpio config @2013-09-13 end
 	if (value == LED_OFF)
 		level = 0;
 	else

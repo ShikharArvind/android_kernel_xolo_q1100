@@ -33,3 +33,13 @@
 &dsi_hx8389b_qhd_vid {
 	qcom,cont-splash-enabled;
 };
+<<<<<<< HEAD
+=======
+&soc {
+	i2c@f9925000 {
+		fsl@1c {
+			fsl,sensors-position = <7>;
+		};
+	};
+};
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0

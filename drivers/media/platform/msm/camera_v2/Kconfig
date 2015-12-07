@@ -6,7 +6,7 @@ config MSM_CAMERA_SENSOR
           The sensor driver is capable of providing real time
           data for camera support. The driver support V4L2
           subdev APIs.
-	  	  
+
 config MSM_CPP
         bool "Qualcomm MSM Camera Post Processing Engine support"
         depends on MSMB_CAMERA
@@ -162,39 +162,8 @@ config OV5648
 		OmniVision 5 MP Bayer Sensor, only use 1 mipi lane,
 		preview set to 1296*972 at 30 fps,
 		snapshot set to 2592*1944 at 12 fps,
-		This sensor driver does not support auto focus.		
-config OV5648_MCNEX
-	bool "Sensor OV5648 MCNEX (BAYER 5M FF)"
-	depends on MSMB_CAMERA
-	---help---
-		OmniVision 5 MP Bayer Sensor, only use 1 mipi lane,
-		preview set to 1296*972 at 30 fps,
-		snapshot set to 2592*1944 at 12 fps,
 		This sensor driver does not support auto focus.
-config OV5648_SUNRISE
-	bool "Sensor OV5648 SUNRISE (BAYER 5M FF)"
-	depends on MSMB_CAMERA
-	---help---
-		OmniVision 5 MP Bayer Sensor, only use 1 mipi lane,
-		preview set to 1296*972 at 30 fps,
-		snapshot set to 2592*1944 at 12 fps,
-		This sensor driver does not support auto focus.	
-config GC2235_HUAQUAN
-	bool "Sensor GC2235 HUAQUAN (BAYER 2M FF)"
-	depends on MSMB_CAMERA
-	---help---
-		Galaxycore 2 MP Bayer Sensor, only use 1 mipi lane,
-		preview set to 1296*972 at 30 fps,
-		snapshot set to 2400*1200 at 12 fps,
-		This sensor driver does not support auto focus.
-config GC2235_IMATEC
-	bool "Sensor GC2235 IMATEC (BAYER 2M FF)"
-	depends on MSMB_CAMERA
-	---help---
-		Galaxycore 2 MP Bayer Sensor, only use 1 mipi lane,
-		preview set to 1296*972 at 30 fps,
-		snapshot set to 2400*1200 at 12 fps,
-		This sensor driver does not support auto focus.
+
 config MT9M114
 	bool "Sensor MT9M114 (YUV 1.26MP)"
 	depends on MSMB_CAMERA
@@ -231,6 +200,15 @@ config OV8825
 		snapshot config = 3264 * 2448 at 18 fps.
 		2 lanes max fps is 18, 4 lanes max fps is 24.
 
+config OV8865
+	bool "OmniVision OV8865 (BAYER 8MP)"
+	depends on MSMB_CAMERA
+	---help---
+		OmniVision 8 MP Bayer Sensor with auto focus.uses
+		4 mipi lanes, preview config = 1632*1224 30 fps,
+		snapshot config = 3264 * 2448 at 30 fps.
+		Max fps is 30fps at 3264 * 2448, 60fps at 1632 * 1224
+
 config s5k4e1
 	bool "Sensor s5k4e1 (BAYER 5MP)"
 	depends on MSMB_CAMERA
@@ -241,56 +219,14 @@ config s5k4e1
 		This sensor driver does not support auto focus.
 
 config OV12830
-	bool "OmniVision OV12830 TRULY (BAYER 12MP)"
-	depends on MSMB_CAMERA
-	---help---
-		OmniVision 12.8 MP Bayer Sensor with auto focus.uses
-		4 mipi lanes, preview config = 2112 * 1500 at 30 fps,
-		snapshot config = 4224 * 3000 at 15 fps.
-		2 lanes max fps is 18, 4 lanes max fps is 24.		
-config OV12830_MCNEX
-	bool "OmniVision OV12830 MCNEX (BAYER 12MP)"
+	bool "OmniVision OV12830 (BAYER 12MP)"
 	depends on MSMB_CAMERA
 	---help---
 		OmniVision 12.8 MP Bayer Sensor with auto focus.uses
 		4 mipi lanes, preview config = 2112 * 1500 at 30 fps,
 		snapshot config = 4224 * 3000 at 15 fps.
 		2 lanes max fps is 18, 4 lanes max fps is 24.
-config OV12830_SUNRISE
-	bool "OmniVision OV12830 SUNRISE (BAYER 12MP)"
-	depends on MSMB_CAMERA
-	---help---
-		OmniVision 12.8 MP Bayer Sensor with auto focus.uses
-		4 mipi lanes, preview config = 2112 * 1500 at 30 fps,
-		snapshot config = 4224 * 3000 at 15 fps.
-		2 lanes max fps is 18, 4 lanes max fps is 24.	
 
-# add by yangze for camera of s5k3h7 (x825) 2013-08-22 begin	
-config S5K3H7
-	bool "S5K3H7 (BAYER 8MP)"
-	depends on MSMB_CAMERA
-	---help---
-		samsung 8 MP Bayer Sensor with auto focus.uses
-		2 mipi lanes, preview config = 2112 * 1500 at 30 fps,
-		snapshot config = 3200 * 2400 at 15 fps.
-		2 lanes max fps is 18, 4 lanes max fps is 24.
-# add by yangze for camera of s5k3h7 (x825) 2013-08-22 end	
-config OV8865_QTECH
-	bool "OV8865 QTECH (BAYER 8MP)"
-	depends on MSMB_CAMERA
-	---help---
-		OmniVision 8 MP Bayer Sensor with auto focus.uses
-		2 mipi lanes, preview config = 2112 * 1500 at 30 fps,
-		snapshot config = 3200 * 2400 at 15 fps.
-		2 lanes max fps is 18, 4 lanes max fps is 24.		
-config HI841_QTECH
-	bool "HI841 QTECH (BAYER 8MP)"
-	depends on MSMB_CAMERA
-	---help---
-		hynix 8 MP Bayer Sensor with auto focus.uses
-		2 mipi lanes, preview config = 2112 * 1500 at 30 fps,
-		snapshot config = 3200 * 2400 at 15 fps.
-		2 lanes max fps is 18, 4 lanes max fps is 24.	
 config MSM_V4L2_VIDEO_OVERLAY_DEVICE
 	tristate "Qualcomm MSM V4l2 video overlay device"
 	---help---

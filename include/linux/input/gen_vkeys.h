@@ -20,9 +20,5 @@ struct vkeys_platform_data {
 	int *keycodes;
 	int num_keys;
 	int y_offset;
-       int key_width;
-       int key_height;
-       int key_y;
-       int *key_x;
 };
 #endif

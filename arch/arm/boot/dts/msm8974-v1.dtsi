@@ -149,6 +149,13 @@
 	qcom,hsusb-otg-pnoc-errata-fix;
 };
 
+<<<<<<< HEAD
+=======
+&usb3 {
+	qcom,usbin-vadc = <&pm8941_vadc>;
+};
+
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 &gdsc_venus {
 	qcom,skip-logic-collapse;
 	qcom,retain-periph;

@@ -146,10 +146,6 @@ static inline s64 timekeeping_get_ns(void)
 
 	/* read clocksource: */
 	clock = timekeeper.clock;
-	//Added by zhaochengliang for add UTC time for dmesg (X825) SW000000 2013/10/17 begin
-	if (unlikely(clock == NULL))
-		return 0;
-	//Added by zhaochengliang for add UTC time for dmesg (X825) SW000000 2013/10/17 end
 	cycle_now = clock->read(clock);
 
 	/* calculate the delta since the last update_wall_time: */
@@ -246,20 +242,7 @@ void getnstimeofday(struct timespec *ts)
 }
 
 EXPORT_SYMBOL(getnstimeofday);
-//Added by zhaochengliang for add UTC time for dmesg (X825) SW000000 2013/10/17 begin
-void getnstimeofday_nolock(struct timespec *ts)
-{
-	s64 nsecs;
 
-	*ts =  timekeeper.xtime;
-	nsecs = timekeeping_get_ns();
-
-	/* If arch requires, add in gettimeoffset() */
-	nsecs += arch_gettimeoffset();
-
-	timespec_add_ns(ts, nsecs);
-}
-//Added by zhaochengliang for add UTC time for dmesg  (X825) SW000000 2013/10/17 end
 ktime_t ktime_get(void)
 {
 	unsigned int seq;

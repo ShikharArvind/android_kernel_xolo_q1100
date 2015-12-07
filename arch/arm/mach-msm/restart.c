@@ -74,8 +74,7 @@ static void *emergency_dload_mode_addr;
 
 /* Download mode master kill-switch */
 static int dload_set(const char *val, struct kernel_param *kp);
-//Added by zhaochengliang for change default action after crash (PLATOFRM) SW000000 2014/01/06
-static int download_mode = 0;
+static int download_mode = 1;
 module_param_call(download_mode, dload_set, param_get_int,
 			&download_mode, 0644);
 static int panic_prep_restart(struct notifier_block *this,
@@ -116,6 +115,10 @@ static void enable_emergency_dload_mode(void)
 		__raw_writel(EMERGENCY_DLOAD_MAGIC3,
 				emergency_dload_mode_addr +
 				(2 * sizeof(unsigned int)));
+
+		/* Need disable the pmic wdt, then the emergency dload mode
+		 * will not auto reset. */
+		qpnp_pon_wd_config(0);
 		mb();
 	}
 }
@@ -254,14 +257,14 @@ static void msm_restart_prepare(const char *cmd)
 
 	/* Write download mode flags if we're panic'ing */
 	set_dload_mode(in_panic);
-//Added by zhaochengliang for change default action after crash  (PLATFORM) SW000000 2014/01/06 begin
+
+	/* Write download mode flags if restart_mode says so */
+	if (restart_mode == RESTART_DLOAD)
+		set_dload_mode(1);
+
 	/* Kill download mode if master-kill switch is set */
 	if (!download_mode)
 		set_dload_mode(0);
-		/* Write download mode flags if restart_mode says so */
-	if (restart_mode == RESTART_DLOAD)
-		set_dload_mode(1);
-//Added by zhaochengliang for change default action after crash  (PLATFORM) SW000000 2014/01/06 end
 #endif
 
 	pm8xxx_reset_pwr_off(1);
@@ -277,6 +280,8 @@ static void msm_restart_prepare(const char *cmd)
 			__raw_writel(0x77665500, restart_reason);
 		} else if (!strncmp(cmd, "recovery", 8)) {
 			__raw_writel(0x77665502, restart_reason);
+		} else if (!strcmp(cmd, "rtc")) {
+			__raw_writel(0x77665503, restart_reason);
 		} else if (!strncmp(cmd, "oem-", 4)) {
 			unsigned long code;
 			code = simple_strtoul(cmd + 4, NULL, 16) & 0xff;

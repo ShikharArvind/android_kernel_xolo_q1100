@@ -6,7 +6,16 @@ are compatable with MIPI display serial interface specification.
 Required properties:
 - compatible:				Must be "qcom,mdss-dsi-ctrl"
 - cell-index:				Specifies the controller used among the two controllers.
+<<<<<<< HEAD
 - reg:					offset and length of the register set for the device.
+=======
+- reg: 					Base address and length of the different register
+					regions(s) required for DSI device functionality.
+- reg-names: 				A list of strings that map in order to the list of regs.
+					"dsi_ctrl" - MDSS DSI controller register region
+					"dsi_phy" - MDSS DSI PHY register region
+					"mmss_misc_phys" - Register region for MMSS DSI clamps
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 - vdd-supply:				Phandle for vdd regulator device node.
 - vddio-supply:				Phandle for vdd-io regulator device node.
 - vdda-supply:				Phandle for vreg regulator device node.
@@ -46,19 +55,29 @@ Optional properties:
 - qcom,platform-te-gpio:		Specifies the gpio used for TE.
 - qcom,platform-mode-gpio:		Select video/command mode of panel through gpio when it supports
 					both modes.
+<<<<<<< HEAD
 - qcom,platform-reset-sequence:		An array that lists the
 					sequence of reset gpio values and sleeps
 					Each command will have the format defined
 					as below:
 					--> Reset GPIO value
 					--> Sleep value (in ms)
+=======
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 
 Example:
         mdss_dsi0: qcom,mdss_dsi@fd922800 {
 		compatible = "qcom,mdss-dsi-ctrl";
 		label = "MDSS DSI CTRL->0";
 		cell-index = <0>;
+<<<<<<< HEAD
 		reg = <0xfd922800 0x600>;
+=======
+		reg = 	<0xfd922800 0x1f8>,
+			<0xfd922b00 0x2b0>,
+			<0xfd828000 0x108>;
+		reg-names = "dsi_ctrl", "dsi_phy", "mmss_misc_phys";
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		vdd-supply = <&pm8226_l15>;
 		vddio-supply = <&pm8226_l8>;
 		vdda-supply = <&pm8226_l4>;
@@ -77,7 +96,10 @@ Example:
 		qcom,platform-te-gpio = <&msmgpio 24 0>;
 		qcom,platform-enable-gpio = <&msmgpio 58 1>;
 		qcom,platform-mode-gpio = <&msmgpio 7 0>;
+<<<<<<< HEAD
 		qcom,platform-reset-sequence = <1 25 0 20 1 10>;
+=======
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 		qcom,platform-supply-entry1 {
 			qcom,supply-name = "vdd";
 			qcom,supply-min-voltage = <2800000>;

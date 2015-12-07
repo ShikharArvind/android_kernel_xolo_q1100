@@ -49,6 +49,7 @@ MSM sensor node contains properties of camera sensor
 Required properties:
 - compatible : should be manufacturer name followed by sensor name
     - "qcom,s5k3l1yx"
+    - "sne,imx134"
     - "qcom,imx135"
     - "shinetech,gc0339"
     - "shinetech,hi256"
@@ -111,7 +112,6 @@ Optional properties:
 - qcom,gpio-vdig : should contain index to gpio used by sensors digital vreg enable
 - qcom,gpio-vaf : should contain index to gpio used by sensors af vreg enable
 - qcom,gpio-af-pwdm : should contain index to gpio used by sensors af pwdm_n
-- qcom,gpio-cameraid : should contain index to gpio usbed by sensors ID pin
 - qcom,gpio-req-tbl-num : should contain index to gpios specific to this sensor
 - qcom,gpio-req-tbl-flags : should contain direction of gpios present in
     qcom,gpio-req-tbl-num property (in the same order)
@@ -146,9 +146,6 @@ Optional properties:
     sensor
     - 0 -> MASTER 0
     - 1 -> MASTER 1
-- qcom,gpio-cameraid-value : should contain ID pin define for this camera
-    - 0 -> camera id pin define to GND
-    - 1 -> camera id pin define to VDDIO
 - qcom,actuator-src : if auto focus is supported by this sensor, this
    property should contain phandle of respective actuator node
 - qcom,led-flash-src : if LED flash is supported by this sensor, this

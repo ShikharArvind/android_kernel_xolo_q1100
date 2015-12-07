@@ -157,8 +157,6 @@ extern int do_setitimer(int which, struct itimerval *value,
 extern unsigned int alarm_setitimer(unsigned int seconds);
 extern int do_getitimer(int which, struct itimerval *value);
 extern void getnstimeofday(struct timespec *tv);
-//Added by zhaochengliang for add UTC time for dmesg (X825) SW000000 2013/10/17
-extern void getnstimeofday_nolock(struct timespec *tv);
 extern void getrawmonotonic(struct timespec *ts);
 extern void getnstime_raw_and_real(struct timespec *ts_raw,
 		struct timespec *ts_real);

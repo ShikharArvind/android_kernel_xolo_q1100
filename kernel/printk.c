@@ -47,13 +47,7 @@
 #include <mach/msm_rtb.h>
 #define CREATE_TRACE_POINTS
 #include <trace/events/printk.h>
-//Added by zhaochengliang for add UTC time for dmesg (X825) SW000000 2013/10/17 begin
-#include <linux/rtc.h>
-bool printk_rtc = 1;
-#ifdef CONFIG_SMP
-bool printk_cpuid = 1;
-#endif
-//Added by zhaochengliang for add UTC time for dmesg (X825) SW000000 2013/10/17 end
+
 /*
  * Architectures can override it:
  */
@@ -1005,38 +999,7 @@ asmlinkage int vprintk(const char *fmt, va_list args)
 					emit_log_char(*tp);
 				printed_len += tlen;
 			}
-//Added by zhaochengliang for add UTC time for dmesg (X825) SW000000 2013/10/17 begin
-			if (printk_rtc) {
-				/* add the rtc time stamp */
-				char tbuf[100], *tp;
-				unsigned tlen;
-				struct timespec ts;
-				struct rtc_time tm;				
-				getnstimeofday_nolock(&ts);				
-				rtc_time_to_tm(ts.tv_sec, &tm);
-				tlen = sprintf(tbuf, "[(%d-%02d-%02d %02d:%02d:%02d.%09lu UTC)] ",
-						tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday,
-						tm.tm_hour, tm.tm_min, tm.tm_sec, ts.tv_nsec);
 
-				for (tp = tbuf; tp < tbuf + tlen; tp++)
-					emit_log_char(*tp);
-				printed_len += tlen;
-			}
-#ifdef CONFIG_SMP
-			if (printk_cpuid) {
-				/* add the cpu id stamp */
-				char tbuf[100], *tp;
-				unsigned tlen;
-				int id;
-
-				id = raw_smp_processor_id();
-				tlen = sprintf(tbuf, "[cpu%d] ", id);
-				for (tp = tbuf; tp < tbuf + tlen; tp++)
-					emit_log_char(*tp);
-				printed_len += tlen;
-			}
-#endif
-//Added by zhaochengliang for add UTC time for dmesg  (X825) SW000000 2013/10/17 end
 			if (!*p)
 				break;
 		}

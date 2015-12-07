@@ -14,10 +14,7 @@
 
 static struct single_row_lut fcc_temp = {
 	.x		= {-20, 0, 25, 40, 65},
-	/*xiongzuan modify for charger and discharger by 20130916 begin */
-	/*.y		= {1492, 1492, 1493, 1483, 1502},*/
-	.y		= {1900, 1900, 1900, 1900, 1900},
-	/*xiongzuan modify for charger and discharger by 20130916 and */
+	.y		= {1492, 1492, 1493, 1483, 1502},
 	.cols	= 5
 };
 
@@ -54,18 +51,10 @@ static struct pc_temp_ocv_lut pc_temp_ocv = {
 				{3633, 3669, 3667, 3655, 3606},
 				{3610, 3647, 3640, 3620, 3560},
 				{3580, 3607, 3596, 3572, 3501},
-				/*xiongzuan modify for charger and discharger by 20130903 begin */
-				{3553, 3568, 3557, 3532, 3455},
-				{3477, 3488, 3479, 3459, 3424},
-				{3448, 3448, 3450, 3427, 3412},
-				{3350, 3350, 3350, 3350, 3350}
-				/*
 				{3533, 3548, 3537, 3512, 3425},
 				{3457, 3468, 3459, 3429, 3324},
 				{3328, 3348, 3340, 3297, 3172},
 				{3000, 3000, 3000, 3000, 3000}
-				*/
-				/*xiongzuan modify for charger and discharger by 20130903 end */
 	}
 };
 
@@ -111,13 +100,11 @@ static struct sf_lut rbatt_sf = {
 };
 
 struct bms_battery_data palladium_1500_data = {
-/*xiongzuan modify for charger and discharger by 20130916 begin */
-	.fcc			= 1900,//1500,
+	.fcc			= 1500,
 	.fcc_temp_lut		= &fcc_temp,
 	.pc_temp_ocv_lut	= &pc_temp_ocv,
 	.rbatt_sf_lut		= &rbatt_sf,
 	.default_rbatt_mohm	= 236,
 	.rbatt_capacitive_mohm	= 50,
 	.flat_ocv_threshold_uv	= 3800000,
-	/*xiongzuan modify for charger and discharger by 20130916 end */
 };

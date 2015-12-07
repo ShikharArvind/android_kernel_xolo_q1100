@@ -116,36 +116,6 @@ static int __devinit vkey_parse_dt(struct device *dev,
 		dev_err(dev, "Failed to read y position offset\n");
 		return rc;
 	}
-	
-	//read key info;
-	rc = of_property_read_u32(np, "qcom,key_width", &pdata->key_width);
-	if (rc) {
-		dev_err(dev, "Failed to read key_width info\n");
-	}
-	
-	rc = of_property_read_u32(np, "qcom,key_height", &pdata->key_height);
-	if (rc) {
-		dev_err(dev, "Failed to read key_height info\n");
-	}
-	   
-	rc = of_property_read_u32(np, "qcom,key_y", &pdata->key_y);
-	if (rc) {
-		dev_err(dev, "Failed to read key_y info\n");
-	}
-	
-	prop = of_find_property(np, "qcom,key_x", NULL);
-	if (prop) {
-		pdata->key_x= devm_kzalloc(dev,
-			sizeof(u32) * pdata->num_keys, GFP_KERNEL);
-		if (!pdata->key_x)
-			return -ENOMEM;
-		rc = of_property_read_u32_array(np, "qcom,key_x",
-				pdata->key_x, pdata->num_keys);
-		if (rc) {
-			dev_err(dev, "Failed to read key_x\n");
-			return -EINVAL;
-		}
-	}
 	return 0;
 }
 
@@ -193,14 +163,10 @@ static int __devinit vkeys_probe(struct platform_device *pdev)
 
 	x2 -= border * BORDER_ADJUST_NUM / BORDER_ADJUST_DENOM;
 
-	center_y = pdata->key_y;
-	width = pdata->key_width;
-       height = pdata->key_height;
 	for (i = 0; i < pdata->num_keys; i++) {
 		x1 = x2 + border;
 		x2 = x2 + border + width;
 		center_x = x1 + (x2 - x1) / 2;
-		center_x = pdata->key_x[i];
 		c += snprintf(vkey_buf + c, MAX_BUF_SIZE - c,
 				"%s:%d:%d:%d:%d:%d\n",
 				VKEY_VER_CODE, pdata->keycodes[i],

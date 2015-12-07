@@ -548,15 +548,6 @@ config LEDS_TRIGGER_BACKLIGHT
 	  turn off and on when the display is blanked and unblanked.
 
 	  If unsure, say N.
-	  
-config LEDS_TRIGGER_RGB
-	tristate "LED rgb Trigger"
-	depends on LEDS_TRIGGERS
-	help
-	  This allows LEDs to be controlled as a rgb device: they
-	  turn off and on when the red green and blue are needed.
-
-	  If unsure, say N.
 
 config LEDS_TRIGGER_GPIO
 	tristate "LED GPIO Trigger"

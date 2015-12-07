@@ -11,9 +11,13 @@
  */
 
 /dts-v1/;
+<<<<<<< HEAD
 /include/ "msm8926.dtsi"
 /include/ "msm8226-qrd.dtsi"
 /include/ "msm8926-camera-sensor-qrd.dtsi"
+=======
+/include/ "msm8926-qrd-skug.dtsi"
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
 
 / {
 	model = "Qualcomm MSM 8926 QRD SKUG";
@@ -21,6 +25,7 @@
 	qcom,board-id = <11 5>;
 };
 
+<<<<<<< HEAD
 &qrd_batterydata {
 	qcom,rpull-up-kohm = <100>;
 	qcom,vref-batt-therm = <1800000>;
@@ -106,3 +111,5 @@
 &dsi_ssd2080m_720_vid {
 	qcom,cont-splash-enabled;
 };
+=======
+>>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0

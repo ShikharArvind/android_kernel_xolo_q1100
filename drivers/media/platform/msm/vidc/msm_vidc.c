@@ -194,15 +194,6 @@ int msm_vidc_g_ctrl(void *instance, struct v4l2_control *control)
 		return msm_venc_g_ctrl(instance, control);
 	return -EINVAL;
 }
-int msm_vidc_s_ext_ctrl(void *instance, struct v4l2_ext_controls *control)
-{
-	struct msm_vidc_inst *inst = instance;
-	if (!inst || !control)
-		return -EINVAL;
-	if (inst->session_type == MSM_VIDC_ENCODER)
-		return msm_venc_s_ext_ctrl(instance, control);
-	return -EINVAL;
-}
 int msm_vidc_reqbufs(void *instance, struct v4l2_requestbuffers *b)
 {
 	struct msm_vidc_inst *inst = instance;
@@ -1308,6 +1299,7 @@ static void cleanup_instance(struct msm_vidc_inst *inst)
 {
 	struct list_head *ptr, *next;
 	struct vb2_buf_entry *entry;
+	struct internal_buf *buf;
 	if (inst) {
 		mutex_lock(&inst->lock);
 		if (!list_empty(&inst->pendingq)) {
@@ -1319,28 +1311,37 @@ static void cleanup_instance(struct msm_vidc_inst *inst)
 			}
 		}
 		if (!list_empty(&inst->internalbufs)) {
-			mutex_unlock(&inst->lock);
-			if (msm_comm_release_scratch_buffers(inst))
-				dprintk(VIDC_ERR,
-					"Failed to release scratch buffers\n");
-
-			mutex_lock(&inst->lock);
+			list_for_each_safe(ptr, next, &inst->internalbufs) {
+				buf = list_entry(ptr, struct internal_buf,
+						list);
+				list_del(&buf->list);
+				mutex_unlock(&inst->lock);
+				msm_comm_smem_free(inst, buf->handle);
+				kfree(buf);
+				mutex_lock(&inst->lock);
+			}
 		}
 		if (!list_empty(&inst->persistbufs)) {
-			mutex_unlock(&inst->lock);
-			if (msm_comm_release_persist_buffers(inst))
-				dprintk(VIDC_ERR,
-					"Failed to release persist buffers\n");
-
-			mutex_lock(&inst->lock);
+			list_for_each_safe(ptr, next, &inst->persistbufs) {
+				buf = list_entry(ptr, struct internal_buf,
+						list);
+				list_del(&buf->list);
+				mutex_unlock(&inst->lock);
+				msm_comm_smem_free(inst, buf->handle);
+				kfree(buf);
+				mutex_lock(&inst->lock);
+			}
 		}
 		if (!list_empty(&inst->outputbufs)) {
-			mutex_unlock(&inst->lock);
-			if (msm_comm_release_output_buffers(inst))
-				dprintk(VIDC_ERR,
-					"Failed to release output buffers\n");
-
-			mutex_lock(&inst->lock);
+			list_for_each_safe(ptr, next, &inst->outputbufs) {
+				buf = list_entry(ptr, struct internal_buf,
+						list);
+				list_del(&buf->list);
+				mutex_unlock(&inst->lock);
+				msm_comm_smem_free(inst, buf->handle);
+				kfree(buf);
+				mutex_lock(&inst->lock);
+			}
 		}
 		if (inst->extradata_handle) {
 			mutex_unlock(&inst->lock);
@@ -1411,9 +1412,4 @@ int msm_vidc_close(void *instance)
 	kfree(inst);
 
 	return 0;
-}
-
-int msm_vidc_suspend(int core_id)
-{
-	return msm_comm_suspend(core_id);
 }

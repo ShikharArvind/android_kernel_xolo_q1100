@@ -48,6 +48,10 @@ struct msm_sensor_fn_t {
 		(struct msm_sensor_ctrl_t *);
 	int (*sensor_power_up) (struct msm_sensor_ctrl_t *);
 	int32_t (*sensor_match_id)(struct msm_sensor_ctrl_t *s_ctrl);
+	// add by yangze for camera sensor otp func test (x825) 2013-08-19 begin
+	void (*sensor_otp_init_setting)(struct msm_sensor_ctrl_t *s_ctrl);
+	void (*sensor_update_otp)(struct msm_sensor_ctrl_t *s_ctrl);
+	// add by yangze for camera sensor otp func test (x825) 2013-08-19 end
 };
 
 struct msm_sensor_ctrl_t {

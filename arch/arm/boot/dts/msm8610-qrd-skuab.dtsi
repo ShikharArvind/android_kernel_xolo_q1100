@@ -65,11 +65,11 @@
 			vcc-i2c-supply = <&pm8110_l14>;
 			goodix,panel-coords = <0 0 540 980>;
 			goodix,display-coords = <0 0 540 960>;
-<<<<<<< HEAD
+ 
 			goodix,button-map= <139 102 158>;
-=======
+ 
 			goodix,button-map= <139 172 158>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 			goodix,product-id = "915";
 			goodix,enable-power-off;
 			goodix,cfg-data0 = [
@@ -105,8 +105,8 @@
 		qcom,y-offset = <0>;
 	};
 
-<<<<<<< HEAD
-=======
+ 
+ 
 	i2c@f9924000 { /* BLSP-1 QUP-2 */
 		nfc-nci@e {
 			compatible = "qcom,nfc-nci";
@@ -121,7 +121,7 @@
 		};
 	};
 
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
     i2c@f9925000 {
 		fsl@1c {
 			compatible = "fsl,mma8x5x";

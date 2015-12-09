@@ -4,21 +4,21 @@ Qualcomm audio devices for ALSA sound SoC
 
 Required properties:
 
-<<<<<<< HEAD
+ 
  - compatible : "qcom,msm-pcm-dsp"
 
  - qcom,msm-pcm-dsp-id : device node id
-=======
+ 
  - compatible : "qti,msm-pcm-dsp"
 
  - qti,msm-pcm-dsp-id : device node id
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 
 * msm-pcm-low-latency
 
 Required properties:
 
-<<<<<<< HEAD
+ 
  - compatible : "qcom,msm-pcm-dsp"
 
  - qcom,msm-pcm-dsp-id : device node id
@@ -28,7 +28,7 @@ Required properties:
       - qcom,msm-pcm-low-latency : Flag indicating whether
         the device node is of type low latency.
 
-=======
+ 
  - compatible : "qti,msm-pcm-dsp"
 
  - qti,msm-pcm-dsp-id : device node id
@@ -44,7 +44,7 @@ Required properties:
                             regular : regular low latency stream
                             ultra : ultra low latency stream
 
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 * msm-pcm-routing
 
 Required properties:
@@ -126,15 +126,15 @@ Required properties:
 
  - compatible : "qcom,msm-lsm-client"
 
-<<<<<<< HEAD
-=======
+ 
+ 
 * msm-pcm-loopback
 
 Required properties:
 
  - compatible : "qti,msm-pcm-loopback"
 
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 * msm-dai-q6
 
 [First Level Nodes]
@@ -161,10 +161,10 @@ Required properties:
                             FM Rx and TX port ID values from 12292 to 12293
                             incall record Rx and TX port ID values from 32771 to 32772
                             inCall Music Delivery port ID is 32773
-<<<<<<< HEAD
-=======
+ 
+ 
                             incall Music 2 Delivery port ID is 32770
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 
 * msm-auxpcm
 
@@ -257,7 +257,7 @@ Required properties:
 
 Example:
 
-<<<<<<< HEAD
+ 
         qcom,msm-pcm {
 		compatible = "qcom,msm-pcm-dsp";
 		qcom,msm-pcm-dsp-id = <0>;
@@ -268,7 +268,7 @@ Example:
 		qcom,msm-pcm-dsp-id = <1>;
 		qcom,msm-pcm-low-latency;
         };
-=======
+ 
 	qti,msm-pcm {
 		compatible = "qti,msm-pcm-dsp";
 		qti,msm-pcm-dsp-id = <0>;
@@ -279,7 +279,7 @@ Example:
 		qti,msm-pcm-dsp-id = <1>;
 		qti,msm-pcm-low-latency;
 	};
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 
         qcom,msm-pcm-routing {
                 compatible = "qcom,msm-pcm-routing";
@@ -414,14 +414,14 @@ Example:
 			compatible = "qcom,msm-dai-q6-dev";
 			qcom,msm-dai-q6-dev-id = <32773>;
 		};
-<<<<<<< HEAD
-=======
+ 
+ 
 
 		qcom,msm-dai-q6-incall-music-2-rx {
 			compatible = "qcom,msm-dai-q6-dev";
 			qcom,msm-dai-q6-dev-id = <32770>;
 		};
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	};
 
 	qcom,msm-pri-auxpcm {

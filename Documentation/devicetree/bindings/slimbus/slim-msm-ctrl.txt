@@ -54,15 +54,15 @@ Optional property:
 		 are to be used, so that application processor can query
 		 logical address of the ported generic device to be used.
 		 Other than PC, fields of EA are same across platforms.
-<<<<<<< HEAD
+ 
 
-=======
+ 
  -qcom,slim-mdm: This value indicates presence of slimbus component on
 		 external mdm. This property enables the slimbus driver to
 		 receive subsytem restart notification from mdm and follow
 		 appropriate steps to ensure communication on the bus can be
 		 resumed after mdm-restart.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 Example:
 	slim@fe12f000 {
 		cell-index = <1>;

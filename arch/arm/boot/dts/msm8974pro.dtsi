@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+ 
 /* Copyright (c) 2013, The Linux Foundation. All rights reserved.
-=======
+ 
 /* Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -54,8 +54,8 @@
 			    "lpaif_tert_mode_muxsel",
 			    "lpaif_quat_mode_muxsel";
 	};
-<<<<<<< HEAD
-=======
+ 
+ 
 
 	qcom,clock-krait@f9016000 {
 		qcom,speed1-pvs0-bin-v0 =
@@ -1569,29 +1569,29 @@
 		qcom,scl-gpio = <&msmgpio 30 0>;
 		qcom,master-id = <86>;
 	};
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 };
 
 /* GPU overrides */
 &msm_gpu {
 	/* Updated chip ID */
 	qcom,chipid = <0x03030002>;
-<<<<<<< HEAD
+ 
 
 	qcom,initial-pwrlevel = <6>;
 
 	qcom,msm-bus,num-cases = <10>;
-=======
+ 
 	qcom,msm-bus,num-cases = <15>;
 	qcom,bus-control;
 	qcom,initial-pwrlevel = <3>;
 
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	/* Updated bus bandwidth requirements */
 	qcom,msm-bus,vectors-KBps =
 		/* Off */
 		<26 512 0 0>, <89 604 0 0>,
-<<<<<<< HEAD
+ 
 		/* SVS */
 		<26 512 0 2400000>, <89 604 0 3200000>,
 		/* Nominal / SVS */
@@ -1609,7 +1609,7 @@
 		/* Turbo */
 		<26 512 0 7464000>, <89 604 0 7400000>,
 		/* Turbo */
-=======
+ 
 		/* Sub-SVS / SVS */
 		<26 512 1200000 2456000>, <89 604 0 3200000>,
 		/* SVS */
@@ -1637,7 +1637,7 @@
 		/* Nominal / Turbo */
 		<26 512 0 4912000>, <89 604 0 9248000>,
 		/* Turbo / Turbo */
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		<26 512 0 7464000>, <89 604 0 9248000>;
 
        qcom,gpu-pwrlevels {
@@ -1649,7 +1649,7 @@
                qcom,gpu-pwrlevel@0 {
                        reg = <0>;
                        qcom,gpu-freq = <578000000>;
-<<<<<<< HEAD
+ 
                        qcom,bus-freq = <9>;
                        qcom,io-fraction = <33>;
                };
@@ -1715,7 +1715,7 @@
                        qcom,gpu-freq = <27000000>;
                        qcom,bus-freq = <0>;
                        qcom,io-fraction = <0>;
-=======
+ 
                        qcom,bus-freq = <14>;
                        qcom,io-fraction = <101>;
                };
@@ -1753,7 +1753,7 @@
                        qcom,gpu-freq = <27000000>;
                        qcom,bus-freq = <0>;
                        qcom,io-fraction = <101>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
                };
        };
 };
@@ -1769,10 +1769,10 @@
 	qcom,mdss-has-bwc;
 	qcom,mdss-has-decimation;
 	qcom,mdss-ad-off = <0x0013100 0x00013300>;
-<<<<<<< HEAD
-=======
+ 
+ 
 	vdd-cx-supply = <&pm8841_s2_corner>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 };
 
 &mdss_hdmi_tx {
@@ -1807,11 +1807,11 @@
 	qcom,dec-ocmem-ab-ib = <0 0>,
 		<176000 519000>,
 		<456000 519000>,
-<<<<<<< HEAD
+ 
 		<864000 519000>,
-=======
+ 
 		<864000 629000>,
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		<1728000 1038000>,
 		<2766000 1661000>,
 		<3456000 2076000>,
@@ -1832,11 +1832,11 @@
 		<3240000 1600000>,
 		<4048000 1600000>,
 		<4264000 1600000>;
-<<<<<<< HEAD
+ 
 	qcom,max-hw-load = <1281600>; /* max(4k X 2304 @ 24, 4k X 2160 @ 30) + 1080p @ 30 */
-=======
+ 
 	qcom,max-hw-load = <1216800>; /* 3840 X 2160 @ 30 fps + 1920 X 1088 @ 30 fps */
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	qcom,buffer-type-tz-usage-table = <0x241 0x1>,
 					<0x106 0x2>,
 					<0x480 0x3>;
@@ -1865,8 +1865,8 @@
 	qcom,memblock-remove = <0x05a00000 0x7800000
 				0x0fa00000 0x500000>; /* Address and size of the hole */
 };
-<<<<<<< HEAD
-=======
+ 
+ 
 
 &gdsc_venus {
 	qcom,skip-logic-collapse;
@@ -1878,4 +1878,4 @@
 	qcom,clk-rates = <400000 20000000 25000000 50000000 100000000 192000000 384000000>;
 	qcom,bus-speed-mode = "HS400_1p8v", "HS200_1p8v", "DDR_1p8v";
 };
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 

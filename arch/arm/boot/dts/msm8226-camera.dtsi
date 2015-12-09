@@ -136,7 +136,7 @@
 };
 
 &master0 {
-<<<<<<< HEAD
+ 
 	qcom,hw-thigh = <78>;
 	qcom,hw-tlow = <114>;
 	qcom,hw-tsu-sto = <28>;
@@ -147,7 +147,7 @@
 	qcom,hw-scl-stretch-en = <0>;
 	qcom,hw-trdhld = <6>;
 	qcom,hw-tsp = <1>;
-=======
+ 
 	qcom,hw-thigh = <20>;
 	qcom,hw-tlow = <28>;
 	qcom,hw-tsu-sto = <21>;
@@ -158,12 +158,12 @@
 	qcom,hw-scl-stretch-en = <0>;
 	qcom,hw-trdhld = <6>;
 	qcom,hw-tsp = <3>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	status = "ok";
 };
 
 &master1 {
-<<<<<<< HEAD
+ 
 	qcom,hw-thigh = <78>;
 	qcom,hw-tlow = <114>;
 	qcom,hw-tsu-sto = <28>;
@@ -174,7 +174,7 @@
 	qcom,hw-scl-stretch-en = <0>;
 	qcom,hw-trdhld = <6>;
 	qcom,hw-tsp = <1>;
-=======
+ 
 	qcom,hw-thigh = <20>;
 	qcom,hw-tlow = <28>;
 	qcom,hw-tsu-sto = <21>;
@@ -185,6 +185,6 @@
 	qcom,hw-scl-stretch-en = <0>;
 	qcom,hw-trdhld = <6>;
 	qcom,hw-tsp = <3>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	status = "ok";
 };

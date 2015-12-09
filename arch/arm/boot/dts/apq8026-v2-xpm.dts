@@ -13,11 +13,11 @@
 
 /dts-v1/;
 /include/ "apq8026-v2.dtsi"
-<<<<<<< HEAD
+ 
 /include/ "msm8226-cdp.dtsi"
-=======
+ 
 /include/ "msm8226-720p-cdp.dtsi"
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 
 / {
 	model = "Qualcomm APQ 8026v2 XPM";

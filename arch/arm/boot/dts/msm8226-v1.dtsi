@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+ 
 /* Copyright (c) 2013, The Linux Foundation. All rights reserved.
-=======
+ 
 /* Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -69,8 +69,8 @@
 	qcom,retain-periph;
 	qcom,retain-mem;
 };
-<<<<<<< HEAD
-=======
+ 
+ 
 
 &pm8226_s2 {
 	regulator-max-microvolt = <1275000>;
@@ -131,4 +131,4 @@
 	qcom,cpr-up-threshold = <0>;
 	qcom,cpr-down-threshold = <10>;
 };
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 

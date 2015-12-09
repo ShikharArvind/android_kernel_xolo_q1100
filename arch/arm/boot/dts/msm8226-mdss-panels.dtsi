@@ -16,10 +16,10 @@
 /include/ "dsi-panel-nt35596-1080p-video.dtsi"
 /include/ "dsi-panel-nt35590-720p-cmd.dtsi"
 /include/ "dsi-panel-ssd2080m-720p-video.dtsi"
-<<<<<<< HEAD
+ 
 /include/ "dsi_panel_otm9608a_qhd_video.dtsi"
 /include/ "dsi-panel-r63311-bw905-chaosheng-1080p-video.dtsi"
 /include/ "dsi-panel-hx8394a01-xinli-ips5k0447-5p0-720p-video.dtsi"
-=======
+ 
 /include/ "dsi-panel-jdi-1080p-video.dtsi"
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 

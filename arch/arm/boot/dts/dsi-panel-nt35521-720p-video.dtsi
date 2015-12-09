@@ -38,7 +38,7 @@
 		qcom,mdss-dsi-v-top-border = <0>;
 		qcom,mdss-dsi-v-bottom-border = <0>;
 		qcom,mdss-dsi-bpp = <24>;
-<<<<<<< HEAD
+ 
 		qcom,mdss-dsi-color-order = <0>;
 		qcom,mdss-dsi-underflow-color = <0xff>;
 		qcom,mdss-dsi-border-color = <0>;
@@ -79,7 +79,7 @@
     				29 01 00 00 00 00 11 B2 02 C6 03 01 03 27 03 56 03 76 03 9F 03 B8 03 D5
     				29 01 00 00 00 00 05 B3 03 F9 03 FF
     
-=======
+ 
 		qcom,mdss-dsi-underflow-color = <0xff>;
 		qcom,mdss-dsi-border-color = <0>;
 		qcom,mdss-dsi-pixel-packing = "tight";
@@ -141,7 +141,7 @@
 				29 01 00 00 00 00 03 D1 50 50
 				23 01 00 00 00 00 02 D2 39
 				23 01 00 00 00 00 02 D3 39
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 				29 01 00 00 00 00 06 F0 55 AA 52 08 02
 				29 01 00 00 00 00 11 B0 00 AC 00 BA 00 D9 00 ED 01 01 01 1E 01 3A 01 62
 				29 01 00 00 00 00 11 B1 01 85 01 B8 01 E4 02 27 02 5B 02 5D 02 8C 02 BE
@@ -168,7 +168,7 @@
 				29 01 00 00 00 00 11 C6 02 DF 03 0C 03 2A 03 51 03 6D 03 8D 03 A4 03 BE
 				29 01 00 00 00 00 05 C7 03 CC 03 CC
 				23 01 00 00 00 00 02 EE 00
-<<<<<<< HEAD
+ 
     				29 01 00 00 00 00 06 F0 55 AA 52 08 03
     				29 01 00 00 00 00 03 B0 20 00
     				29 01 00 00 00 00 03 B1 20 00
@@ -272,7 +272,7 @@
 		qcom,mdss-dsi-h-sync-pulse = <1>;
 		qcom,mdss-dsi-traffic-mode = <2>;
 		qcom,mdss-dsi-lane-map = <0>;
-=======
+ 
 				29 01 00 00 00 00 06 F0 55 AA 52 08 03
 				29 01 00 00 00 00 03 B0 00 00
 				29 01 00 00 00 00 03 B1 00 00
@@ -400,7 +400,7 @@
 		qcom,mdss-dsi-off-command-state = "dsi_hs_mode";
 		qcom,mdss-dsi-h-sync-pulse = <1>;
 		qcom,mdss-dsi-traffic-mode = "burst_mode";
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		qcom,mdss-dsi-bllp-eof-power-mode;
 		qcom,mdss-dsi-bllp-power-mode;
 		qcom,mdss-dsi-lane-0-state;
@@ -410,7 +410,7 @@
 		qcom,mdss-dsi-panel-timings = [93 1F 17 00 2F 2E 1C 21 26 03 04 00];
 		qcom,mdss-dsi-t-clk-post = <0x20>;
 		qcom,mdss-dsi-t-clk-pre = <0x2D>;
-<<<<<<< HEAD
+ 
 		qcom,mdss-dsi-bl-min-level = <0>;
 		qcom,mdss-dsi-bl-max-level = <255>;
 		qcom,mdss-dsi-dma-trigger = <4>;
@@ -418,7 +418,7 @@
 		qcom,mdss-pan-bl-levels = <1 255>;
 		qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 		qcom,mdss-dsi-reset-sequence = <1 20>, <0 20>, <1 20>;
-=======
+ 
 		qcom,mdss-dsi-bl-min-level = <1>;
 		qcom,mdss-dsi-bl-max-level = <255>;
 		qcom,mdss-dsi-dma-trigger = "trigger_sw";
@@ -426,6 +426,6 @@
 		qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 		qcom,mdss-dsi-reset-sequence = <1 20>, <0 1>, <1 20>;
 
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	};
 };

@@ -16,8 +16,8 @@ Required properties:
 Optional properties:
   - qcom,ce-hw-shared : optional, indicates if the hardware is shared between EE.
   - qcom,ce-hw-key : optional, indicates if the hardware supports use of HW KEY.
-<<<<<<< HEAD
-=======
+ 
+ 
   - qcom,use-sw-aes-cbc-ecb-ctr-algo : optional, indicates if use SW aes-cbc/ecb/ctr algorithm.
   - qcom,use-sw-aes-xts-algo : optional, indicates if use SW aes-xts algorithm.
   - qcom,use-sw-aead-algo : optional, indicates if use SW aead algorithm.
@@ -25,7 +25,7 @@ Optional properties:
   - qcom,use-sw-hmac-algo : optional, indicates if use SW hmac algorithm.
   - qcom,use-sw-aes-ccm-algo : optional, indicates if use SW aes-ccm algorithm.
   - qcom,clk-mgmt-sus-res : optional, indicate if the ce clocks need to be disabled/enabled in suspend/resume function.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 
 Example:
 

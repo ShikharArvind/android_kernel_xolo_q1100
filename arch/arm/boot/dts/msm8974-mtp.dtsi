@@ -733,8 +733,8 @@
 &dsi_tosh_720_vid {
        qcom,cont-splash-enabled;
 };
-<<<<<<< HEAD
-=======
+ 
+ 
 
 &dsi_generic_720p_cmd {
        qcom,cont-splash-enabled;
@@ -743,4 +743,4 @@
 &dsi_jdi_1080_vid {
        qcom,cont-splash-enabled;
 };
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 

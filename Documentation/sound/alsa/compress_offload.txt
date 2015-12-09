@@ -1,5 +1,5 @@
 		compress_offload.txt
-		=====================
+		   
 	Pierre-Louis.Bossart <pierre-louis.bossart@linux.intel.com>
 		Vinod Koul <vinod.koul@linux.intel.com>
 
@@ -145,10 +145,10 @@ Modifications include:
 - Addition of encoding options when required (derived from OpenMAX IL)
 - Addition of rateControlSupported (missing in OpenMAX AL)
 
-<<<<<<< HEAD
-=======
+ 
+ 
 Gapless Playback
-================
+  ==
 When playing thru an album, the decoders have the ability to skip the encoder
 delay and padding and directly move from one track content to another. The end
 user can perceive this as gapless playback as we dont have silence while
@@ -193,7 +193,7 @@ Sequence flow for gapless would be:
 - DSP switches to second track
 (note: order for partial_drain and write for next track can be reversed as well)
 
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 Not supported:
 
 - Support for VoIP/circuit-switched calls is not the target of this

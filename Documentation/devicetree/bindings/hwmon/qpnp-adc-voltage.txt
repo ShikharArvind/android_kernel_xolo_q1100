@@ -22,12 +22,12 @@ NOTE: Atleast one Channel node is required.
 
 Optional properties:
 - qcom,vadc-poll-eoc: Use polling instead of interrupts for End of Conversion completion.
-<<<<<<< HEAD
-=======
+ 
+ 
 - qcom,pmic-revid : Phandle pointing to the revision peripheral node. Use it to query the
 		    PMIC type and revision for applying the appropriate temperature
 		    compensation parameters.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 
 Client required property:
 - qcom,<consumer name>-vadc : The phandle to the corresponding vadc device.
@@ -71,11 +71,11 @@ Required properties:
 			3 : Returns current across 0.1 ohm resistor.
 			4 : Returns XO thermistor voltage in degree's Centigrade.
 			5 : Returns result in degC for 150k pull-up.
-<<<<<<< HEAD
-=======
+ 
+ 
 			9 : Conversion to temperature based on -15~55 allowable
 			    battery charging tempeature setting for btm parameters.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 - qcom,hw-settle-time : Settling period for the channel before ADC read.
 			Select from the following unsigned int.
 			0 : 0us

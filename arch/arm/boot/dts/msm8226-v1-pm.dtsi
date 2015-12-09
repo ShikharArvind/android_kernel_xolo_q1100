@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+ 
 /* Copyright (c) 2013 The Linux Foundation. All rights reserved.
-=======
+ 
 /* Copyright (c) 2013-2014 The Linux Foundation. All rights reserved.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -109,17 +109,17 @@
 		qcom,L2-spm-is-apcs-master;
 	};
 
-<<<<<<< HEAD
+ 
 	qcom,lpm-levels {
-=======
+ 
 	lpm_levels: qcom,lpm-levels {
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		compatible = "qcom,lpm-levels";
 		qcom,default-l2-state = "l2_cache_active";
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-<<<<<<< HEAD
+ 
 		qcom,lpm-level@0 {
 			reg = <0x0>;
 			qcom,mode = "wfi";
@@ -158,7 +158,7 @@
 			qcom,ss-power = <315>;
 			qcom,energy-overhead = <1027150>;
 			qcom,time-overhead = <2400>;
-=======
+ 
 		qcm,cpu-modes {
 			compatible = "qcom,cpu-modes";
 
@@ -212,7 +212,7 @@
 				qcom,sync-cpus;
 				qcom,send-rpm-sleep-set;
 			};
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		};
 	};
 
@@ -344,12 +344,12 @@
 		qcom,pc-mode = "tz_l2_int";
 		qcom,use-sync-timer;
 		qcom,pc-resets-timer;
-<<<<<<< HEAD
-=======
+ 
+ 
 		qcom,cpus-as-clocks;
 		qcom,synced-clocks;
 		qcom,lpm-levels = <&lpm_levels>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	};
 
 	qcom,cpu-sleep-status@f9088008{

@@ -126,12 +126,12 @@ Optional properties:
 						implemented during suspend/resume.
 					"dfps_immediate_clk_mode" = FPS change request is
 						implemented immediately using DSI clocks.
-<<<<<<< HEAD
-=======
+ 
+ 
 					"dfps_immediate_porch_mode" = FPS change request is
 						implemented immediately by changing panel porch
 						values.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 - qcom,mdss-dsi-bl-pmic-control-type:	A string that specifies the implementation of backlight
 					control for this panel.
 					"bl_ctrl_pwm" = Backlight controlled by PWM gpio.
@@ -148,11 +148,11 @@ Optional properties:
 					0 = default value.
 - qcom,mdss-dsi-bl-max-level:		Specifies the max backlight level supported by the panel.
 					255 = default value.
-<<<<<<< HEAD
-=======
+ 
+ 
 - qcom,mdss-brightness-max-level:	Specifies the max brightness level supported.
 					255 = default value.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 - qcom,mdss-dsi-interleave-mode:	Specifies interleave mode.
 					0 = default value.
 - qcom,mdss-dsi-panel-type:		Specifies the panel operating mode.
@@ -165,7 +165,7 @@ Optional properties:
 					1 = TE through TE gpio pin. (default)
 - qcom,mdss-dsi-te-dcs-command:		Inserts the dcs command.
 					1 = default value.
-<<<<<<< HEAD
+ 
 - qcom,mdss-dsi-te-v-sync-rd-ptr-irq-line:	Configures the scan line number that the dsi
 					pixel transfer will start on. Rasing this number
 					will result in delaying the start of the pixel
@@ -175,11 +175,11 @@ Optional properties:
 					between estimated read pointer and write pointer
 					to allow the updating of all the lines except
 					the first line of the frame.
-=======
+ 
 - qcom,mdss-dsi-wr-mem-start:		DCS command for write_memory_start.
 					0x2c = default value.
 - qcom,mdss-dsi-wr-mem-continue:	DCS command for write_memory_continue.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 					0x3c = default value.
 - qcom,mdss-dsi-h-sync-pulse:		Specifies the pulse mode option for the panel.
 					0 = Don't send hsa/he following vs/ve packet(default)
@@ -195,7 +195,7 @@ Optional properties:
 - qcom,mdss-dsi-bllp-power-mode:	Boolean to determine DSI lane state during
 					blanking low power period (BLLP) mode.
 - qcom,mdss-dsi-traffic-mode:		Specifies the panel traffic mode.
-<<<<<<< HEAD
+ 
 					0 = non burst with sync pulses (default mode).
 					1 = non burst with sync start event.
 					2 = burst mode.
@@ -211,7 +211,7 @@ Optional properties:
 					3 = DSI_RGB_SWAP_BRG
 					4 = DSI_RGB_SWAP_GRB
 					5 = DSI_RGB_SWAP_GBR
-=======
+ 
 					"non_burst_sync_pulse" = non burst with sync pulses (default).
 					"non_burst_sync_event" = non burst with sync start event.
 					"burst_mode" = burst mode.
@@ -226,13 +226,13 @@ Optional properties:
 					"rgb_swap_brg" = DSI_RGB_SWAP_BRG
 					"rgb_swap_grb" = DSI_RGB_SWAP_GRB
 					"rgb_swap_gbr" = DSI_RGB_SWAP_GBR
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 - qcom,mdss-dsi-lane-0-state:		Boolean that specifies whether data lane 0 is enabled.
 - qcom,mdss-dsi-lane-1-state:		Boolean that specifies whether data lane 1 is enabled.
 - qcom,mdss-dsi-lane-2-state:		Boolean that specifies whether data lane 2 is enabled.
 - qcom,mdss-dsi-lane-3-state:		Boolean that specifies whether data lane 3 is enabled.
 - qcom,mdss-dsi-lane-map:		Specifies the data lane swap configuration.
-<<<<<<< HEAD
+ 
 					0 = <0 1 2 3> (default value)
 					1 = <3 0 1 2>
 					2 = <2 3 0 1>
@@ -241,7 +241,7 @@ Optional properties:
 					5 = <1 0 3 2>
 					6 = <2 1 0 3>
 					7 = <3 2 1 0>
-=======
+ 
 					"lane_map_0123" = <0 1 2 3> (default value)
 					"lane_map_3012" = <3 0 1 2>
 					"lane_map_2301" = <2 3 0 1>
@@ -250,7 +250,7 @@ Optional properties:
 					"lane_map_1032" = <1 0 3 2>
 					"lane_map_2103" = <2 1 0 3>
 					"lane_map_3210" = <3 2 1 0>
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 - qcom,mdss-dsi-t-clk-post:		Specifies the byte clock cycles after mode switch.
 					0x03 = default value.
 - qcom,mdss-dsi-t-clk-pre:		Specifies the byte clock cycles before mode switch.
@@ -259,7 +259,7 @@ Optional properties:
 					0 = stream 0 (default)
 					1 = stream 1
 - qcom,mdss-dsi-mdp-trigger:		Specifies the trigger mechanism to be used for MDP path.
-<<<<<<< HEAD
+ 
 					0 = no trigger
 					2 = Tear check signal line used for trigger
 					4 = Triggered by software (default)
@@ -270,7 +270,7 @@ Optional properties:
 					4 = Triggered by software (default)
 					5 = Software trigger and start/end of frame trigger.
 					6 = Software trigger and TE
-=======
+ 
 					"none" = no trigger
 					"trigger_te" = Tear check signal line used for trigger
 					"trigger_sw" = Triggered by software (default)
@@ -281,7 +281,7 @@ Optional properties:
 					"trigger_sw" = Triggered by software (default)
 					"trigger_sw_seof" = Software trigger and start/end of frame trigger.
 					"trigger_sw_te" = Software trigger and TE
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 - qcom,mdss-dsi-panel-framerate:	Specifies the frame rate for the panel.
 					60 = 60 frames per second (default)
 - qcom,mdss-dsi-panel-clockrate:	Specifies the panel clock speed in Hz.
@@ -302,8 +302,8 @@ Optional properties:
 					"low" = Set GPIO to LOW
 - qcom,partial-update-enabled:		Boolean used to enable partial
 					panel update for command mode panels.
-<<<<<<< HEAD
-=======
+ 
+ 
 - qcom,mdss-dsi-reset-sequence:		An array that lists the
 					sequence of reset gpio values and sleeps
 					Each command will have the format defined
@@ -319,7 +319,7 @@ Optional properties:
 - qcom,mdss-dsi-rx-eot-ignore:		Boolean used to enable ignoring end of transmission packets.
 - qcom,mdss-dsi-tx-eot-append:		Boolean used to enable appending end of transmission packets.
 - qcom,ulps-enabled:			Boolean to enable support for Ultra Low Power State (ULPS) mode.
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 
 Note, if a given optional qcom,* binding is not present, then the driver will configure
 the default values specified.
@@ -370,13 +370,13 @@ Example:
 		qcom,mdss-dsi-te-check-enable;
 		qcom,mdss-dsi-te-using-te-pin;
 		qcom,mdss-dsi-te-dcs-command = <1>;
-<<<<<<< HEAD
+ 
 		qcom,mdss-dsi-te-v-sync-continue-lines = <0x3c>;
 		qcom,mdss-dsi-te-v-sync-rd-ptr-irq-line = <0x2c>;
-=======
+ 
 		qcom,mdss-dsi-wr-mem-continue = <0x3c>;
 		qcom,mdss-dsi-wr-mem-start = <0x2c>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		qcom,mdss-dsi-te-pin-select = <1>;
 		qcom,mdss-dsi-h-sync-pulse = <1>;
 		qcom,mdss-dsi-hfp-power-mode;
@@ -416,14 +416,14 @@ Example:
 		qcom,mdss-pan-physical-height-dimension = <140>;
 		qcom,mdss-dsi-panel-mode-gpio-state = "low";
 		qcom,partial-update-enabled;
-<<<<<<< HEAD
-=======
+ 
+ 
 		qcom,mdss-dsi-reset-sequence = <1 2>, <0 10>, <1 10>;
 		qcom,mdss-dsi-lp11-init;
 		qcom,mdss-dsi-init-delay-us = <100>;
 		mdss-dsi-rx-eot-ignore;
 		mdss-dsi-tx-eot-append;
 		qcom,ulps-enabled;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	};
 };

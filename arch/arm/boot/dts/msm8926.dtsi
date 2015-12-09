@@ -39,12 +39,12 @@
 		vdd_mss-supply = <&pm8226_s5>;
 	};
 
-<<<<<<< HEAD
+ 
 	qcom,acpuclk@f9011050 {
 		reg =	<0xf9011050 0x8>,
 			<0xfc4b80b0 0x8>;
 		reg-names = "rcg_base", "pte_efuse";
-=======
+ 
 	qcom,clock-a7@f9011050 {
 		reg =	<0xf9011050 0x8>,
 			<0xfc4b80b0 0x8>;
@@ -103,7 +103,7 @@
 			<1401600000 10>,
 			<1497600000 11>,
 			<1593600000 12>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	};
 
 	qcom,msm-thermal {
@@ -156,7 +156,7 @@
 	};
 };
 
-<<<<<<< HEAD
+ 
 &pm8226_l3 {
 	regulator-min-microvolt = <750000>;
 	regulator-max-microvolt = <1350000>;
@@ -192,7 +192,7 @@
 	qcom,cpr-up-threshold = <0>;
 	qcom,cpr-down-threshold = <5>;
 	qcom,cpr-apc-volt-step = <10000>;
-=======
+ 
 &apc_vreg_corner {
 	qcom,cpr-up-threshold = <0>;
 	qcom,cpr-down-threshold = <2>;
@@ -222,7 +222,7 @@
 			<2 1 2 4 10>,
 			<5 1 2 4 14>;
 	qcom,cpr-quot-adjust-scaling-factor-max = <650>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 };
 
 &tsens {

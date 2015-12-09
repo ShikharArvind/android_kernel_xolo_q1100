@@ -17,11 +17,11 @@
  *---------------------------------------------------------------------------*/
 &mdss_mdp {
 	dsi_hx8389b_qhd_vid: qcom,mdss_dsi_hx8389b_qhd_video {
-<<<<<<< HEAD
+ 
 		qcom,mdss-dsi-panel-name = "HX8389b qhd video mode dsi panel";
-=======
+ 
 		qcom,mdss-dsi-panel-name = "hx8389b qhd video mode dsi panel";
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		qcom,mdss-dsi-panel-controller = <&mdss_dsi0>;
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
 		qcom,mdss-dsi-panel-destination = "display_1";
@@ -30,7 +30,7 @@
 		qcom,mdss-dsi-stream = <0>;
 		qcom,mdss-dsi-panel-width = <540>;
 		qcom,mdss-dsi-panel-height = <960>;
-<<<<<<< HEAD
+ 
 		qcom,mdss-dsi-h-front-porch = <48>;
 		qcom,mdss-dsi-h-back-porch = <96>;
 		qcom,mdss-dsi-h-pulse-width = <96>;
@@ -38,7 +38,7 @@
 		qcom,mdss-dsi-v-front-porch = <9>;
 		qcom,mdss-dsi-v-pulse-width = <3>;
 		qcom,mdss-dsi-v-back-porch = <13>;
-=======
+ 
 		qcom,mdss-dsi-h-front-porch = <60>;
 		qcom,mdss-dsi-h-back-porch = <39>;
 		qcom,mdss-dsi-h-pulse-width = <39>;
@@ -46,7 +46,7 @@
 		qcom,mdss-dsi-v-back-porch = <13>;
 		qcom,mdss-dsi-v-front-porch = <9>;
 		qcom,mdss-dsi-v-pulse-width = <3>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		qcom,mdss-dsi-h-left-border = <0>;
 		qcom,mdss-dsi-h-right-border = <0>;
 		qcom,mdss-dsi-v-top-border = <0>;
@@ -55,7 +55,7 @@
 		qcom,mdss-dsi-color-order = <0>;
 		qcom,mdss-dsi-underflow-color = <0xff>;
 		qcom,mdss-dsi-border-color = <0>;
-<<<<<<< HEAD
+ 
 		qcom,mdss-dsi-on-command = [
 				39 01 00 00 00 00 04
 					B9 FF 83 89
@@ -125,7 +125,7 @@
 				05 01 00 00 96 00 02
 					29 00
 		];
-=======
+ 
 		qcom,mdss-dsi-on-command = [39 01 00 00 0A 00 04 B9 FF 83 89
 				15 01 00 00 01 00 02 CC 02
 				39 01 00 00 01 00 03 C0 43 17
@@ -140,24 +140,24 @@
 				39 01 00 00 01 00 05 B6 00 88 00 88
 				05 01 00 00 78 00 02 11 00
 				05 01 00 00 32 00 02 29 00];
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		qcom,mdss-dsi-off-command = [05 01 00 00 32 00 02 28 00
 					05 01 00 00 78 00 02 10 00];
 		qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-off-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-h-sync-pulse = <1>;
-<<<<<<< HEAD
+ 
 		qcom,mdss-dsi-traffic-mode = <2>;
 		qcom,mdss-dsi-lane-map = <1>;
-=======
+ 
 		qcom,mdss-dsi-traffic-mode = "burst_mode";
 		qcom,mdss-dsi-lane-map = "lane_map_3012";
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 		qcom,mdss-dsi-bllp-eof-power-mode;
 		qcom,mdss-dsi-bllp-power-mode;
 		qcom,mdss-dsi-lane-0-state;
 		qcom,mdss-dsi-lane-1-state;
-<<<<<<< HEAD
+ 
 		qcom,mdss-dsi-panel-timings = [97 23 17 00 4B 53 1C 27 27 03 04 00];
 		qcom,mdss-dsi-t-clk-post = <0x04>;
 		qcom,mdss-dsi-t-clk-pre = <0x1b>;
@@ -168,7 +168,7 @@
 		qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 		qcom,mdss-dsi-reset-sequence = <1 20>, <0 2>, <1 20>;
 
-=======
+ 
 		qcom,mdss-dsi-panel-timings = [87 1E 14 00 44 4B 19 21 22 03 04 00];
 		qcom,mdss-dsi-t-clk-post = <0x04>;
 		qcom,mdss-dsi-t-clk-pre = <0x1b>;
@@ -178,6 +178,6 @@
 		qcom,mdss-dsi-mdp-trigger = "none";
 		qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 		qcom,mdss-dsi-reset-sequence = <1 20>, <0 2>, <1 20>;
->>>>>>> remotes/remi/LNX.LA.3.5.1-10110-8x26.0
+ 
 	};
 };

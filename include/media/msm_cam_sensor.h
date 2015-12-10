@@ -98,6 +98,7 @@ enum msm_sensor_power_seq_gpio_t {
 	SENSOR_GPIO_VANA,
 	SENSOR_GPIO_VDIG,
 	SENSOR_GPIO_VAF,
+	SENSOR_GPIO_ID,  //add by hanjianfeng  to  check pin of cameraid value 20130725
 	SENSOR_GPIO_MAX,
 };
 
@@ -439,6 +440,8 @@ enum msm_sensor_cfg_type_t {
 	CFG_SET_WHITE_BALANCE,
 	CFG_SET_AUTOFOCUS,
 	CFG_CANCEL_AUTOFOCUS,
+	// add by yangze for camera sensor otp func test (x825) 2013-08-19
+	CFG_SET_SENSOR_OTP,	
 };
 
 enum msm_actuator_cfg_type_t {

@@ -81,6 +81,7 @@ struct msm_camera_sensor_board_info {
 	struct msm_sensor_info_t *sensor_info;
 	struct msm_sensor_init_params *sensor_init_params;
 	const char *misc_regulator;
+	int gpio_cameraid_value; //add by hanjianfeng  to  check pin of cameraid value 20130725
 };
 
 enum msm_camera_i2c_cmd_type {

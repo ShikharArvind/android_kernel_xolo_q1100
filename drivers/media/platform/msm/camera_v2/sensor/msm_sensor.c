@@ -19,6 +19,7 @@
 #include <mach/rpm-regulator.h>
 #include <mach/rpm-regulator-smd.h>
 #include <linux/regulator/consumer.h>
+#include "msm_camsensor_register.h" //Added By hanjianfeng to add interface of camera register for camera detect 2013-07-26
 
 #undef CDBG
 #ifdef CONFIG_MSMB_CAMERA_DEBUG
@@ -654,6 +655,24 @@ int32_t msm_sensor_init_gpio_pin_tbl(struct device_node *of_node,
 			__func__, __LINE__, rc);
 		goto ERROR;
 	}
+	/*Added Begain:By hanjianfeng to add check pin value of camera id  (x825)2013-07-25*/
+	rc = of_property_read_u32(of_node, "qcom,gpio-cameraid", &val);
+	if (!rc) {
+		if (val >= gpio_array_size) {
+			pr_err("hanjf %s:%d qcom,gpio-cameraid invalid %d\n",
+				__func__, __LINE__, val);
+			goto ERROR;
+		}
+		gconf->gpio_num_info->gpio_num[SENSOR_GPIO_ID] =
+			gpio_array[val];
+		CDBG("hanjf %s qcom,gpio-cameraid %d\n", __func__,
+			gconf->gpio_num_info->gpio_num[SENSOR_GPIO_ID]);
+	} else if (rc != -EINVAL) {
+		pr_err("hanjf %s:%d read qcom,gpio-cameraid failed rc %d\n",
+			__func__, __LINE__, rc);
+		goto ERROR;
+	}
+	/*Added End:By hanjianfeng to add check pin value of camera id  (x825)2013-07-25*/
 	return 0;
 
 ERROR:
@@ -761,7 +780,20 @@ static int32_t msm_sensor_get_dt_data(struct device_node *of_node,
 		sensordata->sensor_init_params->sensor_mount_angle = 0;
 		rc = 0;
 	}
-
+	
+	/*Added Begain:By hanjianfeng to add check pin value of camera id  (x825)2013-07-25*/
+	rc = of_property_read_u32(of_node, "qcom,gpio-cameraid-value",
+		&sensordata->gpio_cameraid_value);
+	CDBG("hanjf %s qcom,gpio-cameraid-value %d, rc %d\n", __func__,
+		sensordata->gpio_cameraid_value, rc);
+	if (rc < 0) {
+		/* Get qcom,gpio-camereid-value fail*/
+		pr_err("hanjf %s Get qcom,gpio-cameraid-value failed %d\n", __func__, __LINE__);
+		sensordata->gpio_cameraid_value = 2;
+		rc = 0;
+	}
+	/*Added End:By hanjianfeng to add check pin value of camera id  (x825)2013-07-25*/
+	
 	rc = of_property_read_u32(of_node, "qcom,cci-master",
 		&s_ctrl->cci_i2c_master);
 	CDBG("%s qcom,cci-master %d, rc %d\n", __func__, s_ctrl->cci_i2c_master,
@@ -1220,6 +1252,8 @@ int32_t msm_sensor_match_id(struct msm_sensor_ctrl_t *s_ctrl)
 {
 	int32_t rc = 0;
 	uint16_t chipid = 0;
+	int pin_cameraid_value = 0; //add by hanjianfeng to check pin value of camera id 2013-07-25
+	
 	rc = s_ctrl->sensor_i2c_client->i2c_func_tbl->i2c_read(
 			s_ctrl->sensor_i2c_client,
 			s_ctrl->sensordata->slave_info->sensor_id_reg_addr,
@@ -1236,6 +1270,18 @@ int32_t msm_sensor_match_id(struct msm_sensor_ctrl_t *s_ctrl)
 		pr_err("msm_sensor_match_id chip id doesnot match\n");
 		return -ENODEV;
 	}
+	
+	/*Added Begain:By hanjianfeng to add check pin value of camera id  (x825)2013-07-25*/
+	pin_cameraid_value = gpio_get_value(s_ctrl->sensordata->gpio_conf->gpio_num_info->gpio_num[SENSOR_GPIO_ID]);
+	CDBG("hanjf get gpio camera id value :%d\n", pin_cameraid_value);
+	CDBG("hanjf get dts camera id value :%d\n", s_ctrl->sensordata->gpio_cameraid_value);
+	if(pin_cameraid_value != s_ctrl->sensordata->gpio_cameraid_value)
+	{
+		pr_err("hanjf msm_sensor_match_id  pin camerid doesnot match\n");
+		return -ENODEV;
+	}
+	/*Added End:By hanjianfeng to add check pin value of camera id  (x825)2013-07-25*/
+	
 	return rc;
 }
 
@@ -1449,6 +1495,20 @@ int32_t msm_sensor_config(struct msm_sensor_ctrl_t *s_ctrl,
 		kfree(reg_setting);
 		break;
 	}
+	
+	// add by yangze for camera sensor otp func test (x825) 2013-08-19 begin
+	case CFG_SET_SENSOR_OTP: {
+		if(s_ctrl->func_tbl->sensor_otp_init_setting){
+			s_ctrl->func_tbl->sensor_otp_init_setting(s_ctrl);
+		}
+
+		if(s_ctrl->func_tbl->sensor_update_otp){
+			s_ctrl->func_tbl->sensor_update_otp(s_ctrl);
+		}
+		break;
+	}
+	// add by yangze for camera sensor otp func test (x825) 2013-08-19 end
+	
 	case CFG_SLAVE_READ_I2C: {
 		struct msm_camera_i2c_read_config read_config;
 		uint16_t local_data = 0;
@@ -1775,6 +1835,10 @@ static struct msm_sensor_fn_t msm_sensor_func_tbl = {
 	.sensor_power_up = msm_sensor_power_up,
 	.sensor_power_down = msm_sensor_power_down,
 	.sensor_match_id = msm_sensor_match_id,
+	// add by yangze for camera sensor otp func test (x825) 2013-08-19 begin
+	.sensor_otp_init_setting = NULL,
+	.sensor_update_otp = NULL,
+	// add by yangze for camera sensor otp func test (x825) 2013-08-19 end
 };
 
 static struct msm_camera_i2c_fn_t msm_sensor_cci_func_tbl = {
@@ -1859,7 +1923,11 @@ int32_t msm_sensor_platform_probe(struct platform_device *pdev, void *data)
 		kfree(cci_client);
 		return rc;
 	}
-
+	
+	/*Added Begain:By hanjianfeng to add interface of camera register for camera detect (x825)2013-07-26*/
+	msm_camsensor_register(s_ctrl->sensordata->sensor_init_params->position);
+	/*Added End:By hanjianfeng to add interface of camera register for camera detect (x825)2013-07-26*/
+	
 	CDBG("%s %s probe succeeded\n", __func__,
 		s_ctrl->sensordata->sensor_name);
 	v4l2_subdev_init(&s_ctrl->msm_sd.sd,

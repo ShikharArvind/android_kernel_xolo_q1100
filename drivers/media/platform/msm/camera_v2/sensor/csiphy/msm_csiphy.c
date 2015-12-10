@@ -117,6 +117,10 @@ static int msm_csiphy_lane_config(struct csiphy_device *csiphy_dev,
 			csiphybase + MIPI_CSIPHY_LNn_CFG2_ADDR + 0x40*j);
 		msm_camera_io_w(csiphy_params->settle_cnt,
 			csiphybase + MIPI_CSIPHY_LNn_CFG3_ADDR + 0x40*j);
+		/*Added Begain:By hanjianfeng to resolve mipi issue at qcom 8x26 (x825) 2013-12-13*/
+		msm_camera_io_w(0x0b,
+			csiphybase + MIPI_CSIPHY_LNn_CFG4_ADDR + 0x40*j);
+		/*Added End:By hanjianfeng to resolve mipi issue at qcom 8x26 (x825) 2013-12-13*/
 		msm_camera_io_w(MIPI_CSIPHY_INTERRUPT_MASK_VAL, csiphybase +
 			MIPI_CSIPHY_INTERRUPT_MASK_ADDR + 0x4*j);
 		msm_camera_io_w(MIPI_CSIPHY_INTERRUPT_MASK_VAL, csiphybase +

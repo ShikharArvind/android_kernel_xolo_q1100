@@ -1139,6 +1139,12 @@ config MACH_FSM9XXX_SURF
 	  chipset based SURF evaluation board and
 	  FFA board.
 
+config YEP_PRODUCT_X825
+	depends on ARCH_MSM8226
+	default N
+	bool "X825A product configuration"
+	help
+	  Support for yep x825 project.
 endmenu
 
 config MSM_STACKED_MEMORY

@@ -3421,13 +3421,23 @@ static struct clk_lookup msm_clocks_8226[] = {
 	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "6d.qcom,camera"),
 	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "6a.qcom,camera"),
 	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "6c.qcom,camera"),
-	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "20.qcom,camera"),
+	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "5a.qcom,camera"), //add by yangze for camera clock 20130822
+	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "20.qcom,camera"), //add by yangze for camera clock 20130822
+	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "21.qcom,camera"), //add by hanjianfeng for camera clock 20131015
+	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "78.qcom,camera"), //add by hanjianfeng for camera clock (x825C) 20131016
+	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "79.qcom,camera"), //add by hanjianfeng for camera clock (x825C) 20131016
+	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "40.qcom,camera"), //add by hanjianfeng for camera clock (x825C) 20131224
 	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "6f.qcom,camera"),
 	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "90.qcom,camera"),
 	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "6d.qcom,camera"),
 	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "6a.qcom,camera"),
 	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "6c.qcom,camera"),
-	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "20.qcom,camera"),
+	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "5a.qcom,camera"), //add by yangze for camera  clock (x825) 2013-08-22	
+	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "20.qcom,camera"), //add by yangze for camera clock (x825) 2013-08-22	
+	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "21.qcom,camera"), //add by hanjianfeng for camera clock (x825) 20131015
+	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "78.qcom,camera"), //add by hanjianfeng for camera clock (x825C) 20131016
+	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "79.qcom,camera"), //add by hanjianfeng for camera clock (x825C) 20131016
+	CLK_LOOKUP("cam_clk", camss_mclk0_clk.c, "40.qcom,camera"), //add by hanjianfeng for camera clock (x825C) 20131224
 
 	/* eeprom clocks */
 	CLK_LOOKUP("cam_src_clk", mclk0_clk_src.c, "6c.qcom,eeprom"),

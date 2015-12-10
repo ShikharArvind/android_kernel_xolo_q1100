@@ -189,7 +189,7 @@ struct msm_gpio_set_tbl {
 };
 
 struct msm_camera_gpio_num_info {
-	uint16_t gpio_num[7];
+	uint16_t gpio_num[8]; //Modify by hanjianfeng  to  check pin of cameraid value 20130725
 };
 
 struct msm_camera_gpio_conf {

@@ -255,6 +255,7 @@ static struct msm_gpiomux_config msm_blsp_configs[] __initdata = {
 			[GPIOMUX_SUSPENDED] = &gpio_i2c_config,
 		},
 	},
+#if 0 //del by hanjianfeng for camera gpio config 20131015
 	{
 		.gpio      = 15,	/* BLSP1 QUP4 I2C_SCL */
 		.settings = {
@@ -262,6 +263,7 @@ static struct msm_gpiomux_config msm_blsp_configs[] __initdata = {
 			[GPIOMUX_SUSPENDED] = &gpio_i2c_config,
 		},
 	},
+#endif
 	{
 		.gpio      = 18,		/* BLSP1 QUP5 I2C_SDA */
 		.settings = {
@@ -321,6 +323,7 @@ static struct gpiomux_setting gpio_nc_cfg = {
 	.pull = GPIOMUX_PULL_NONE,
 };
 
+#if 0  //del by hanjianfeng for camera gpio config 20131015
 static struct gpiomux_setting goodix_ldo_en_act_cfg = {
 	.func = GPIOMUX_FUNC_GPIO,
 	.drv = GPIOMUX_DRV_6MA,
@@ -332,6 +335,7 @@ static struct gpiomux_setting goodix_ldo_en_sus_cfg = {
 	.drv = GPIOMUX_DRV_2MA,
 	.pull = GPIOMUX_PULL_DOWN,
 };
+#endif
 
 static struct gpiomux_setting goodix_int_act_cfg = {
 	.func = GPIOMUX_FUNC_GPIO,
@@ -385,6 +389,7 @@ static struct msm_gpiomux_config msm_skuf_blsp_configs[] __initdata = {
 };
 
 static struct msm_gpiomux_config msm_skuf_goodix_configs[] __initdata = {
+#if 0 //del by hanjianfeng for camera gpio config 20131015
 	{
 		.gpio = 15,		/* LDO EN */
 		.settings = {
@@ -392,6 +397,7 @@ static struct msm_gpiomux_config msm_skuf_goodix_configs[] __initdata = {
 			[GPIOMUX_SUSPENDED] = &goodix_ldo_en_sus_cfg,
 		},
 	},
+#endif
 	{
 		.gpio = 16,		/* RESET */
 		.settings = {
@@ -497,20 +503,87 @@ static struct msm_gpiomux_config msm_skuf_nfc_configs[] __initdata = {
 		},
 	},
 };
-
-static struct gpiomux_setting sd_card_det_active_config = {
+//yuquan added for rgb led @2013-09-12 begin
+#ifdef CONFIG_LEDS_TRIGGER_RGB
+static struct gpiomux_setting red_led_cfg = {
 	.func = GPIOMUX_FUNC_GPIO,
-	.drv = GPIOMUX_DRV_2MA,
-	.pull = GPIOMUX_PULL_NONE,
-	.dir = GPIOMUX_IN,
+	.drv = GPIOMUX_DRV_6MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+
+static struct gpiomux_setting green_led_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_6MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+
+static struct gpiomux_setting blue_led_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_6MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+
+static struct gpiomux_setting red_led_sus_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_6MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+
+static struct gpiomux_setting green_led_act_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_6MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+
+static struct gpiomux_setting blue_led_sus_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_6MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+
+
+static struct msm_gpiomux_config msm_rgb_led_configs[] __initdata = {
+	{					/*  red led */
+		.gpio      = 0,
+		.settings = {
+			[GPIOMUX_ACTIVE] = &red_led_cfg,
+			[GPIOMUX_SUSPENDED] = &red_led_sus_cfg,
+		},
+	},
+	{					/*  green led*/
+		.gpio      = 1,
+		.settings = {
+			[GPIOMUX_ACTIVE] = &green_led_cfg,
+			[GPIOMUX_SUSPENDED] = &green_led_act_cfg,
+		},
+	},
+	{					/*  blue led */
+		.gpio      = 2,
+		.settings = {
+			[GPIOMUX_ACTIVE] = &blue_led_cfg,
+			[GPIOMUX_SUSPENDED] = &blue_led_sus_cfg,
+		},
+	},
+};
+#endif
+//yuquan added for rgb led @2013-09-12 end
+
+/*Modified begin:by zhaochengliang to change sd detect x825c 20140113*/
+static struct gpiomux_setting sd_card_det_active_config = {
+ .func = GPIOMUX_FUNC_GPIO,
+ .drv = GPIOMUX_DRV_16MA,
+    //yuquan modified:from GPIOMUX_PULL_NONE to GPIOMUX_PULL_UP.
+ .pull = GPIOMUX_PULL_DOWN,	
+ .dir = GPIOMUX_IN,
 };
 
 static struct gpiomux_setting sd_card_det_sleep_config = {
-	.func = GPIOMUX_FUNC_GPIO,
-	.drv = GPIOMUX_DRV_2MA,
-	.pull = GPIOMUX_PULL_UP,
-	.dir = GPIOMUX_IN,
+ .func = GPIOMUX_FUNC_GPIO,
+ .drv = GPIOMUX_DRV_16MA,
+ .pull = GPIOMUX_PULL_DOWN,
+ .dir = GPIOMUX_IN,
 };
+/*Modified End:by zhaochengliang to change sd detect x825c 20140113*/
 
 static struct msm_gpiomux_config sd_card_det __initdata = {
 	.gpio = 38,
@@ -701,7 +774,13 @@ static struct msm_gpiomux_config msm_sensor_configs[] __initdata = {
 			[GPIOMUX_SUSPENDED] = &cam_settings[4],
 		},
 	},
-
+	{
+		.gpio = 15, /* CAM2_DVDD_EN */
+		.settings = {
+			[GPIOMUX_ACTIVE]    = &cam_settings[3],
+			[GPIOMUX_SUSPENDED] = &cam_settings[4],
+		},
+	},
 };
 
 static struct msm_gpiomux_config msm_sensor_configs_skuf_plus[] __initdata = {
@@ -933,6 +1012,11 @@ void __init msm8226_init_gpiomux(void)
 	}
 	msm_gpiomux_install(msm_hsic_configs, ARRAY_SIZE(msm_hsic_configs));
 #endif
+      //yuquan added for rgb led @2013-09-12 begin
+      #ifdef CONFIG_LEDS_TRIGGER_RGB
+	msm_gpiomux_install(msm_rgb_led_configs,
+				ARRAY_SIZE(msm_rgb_led_configs));
+      #endif
 }
 
 static void wcnss_switch_to_gpio(void)
